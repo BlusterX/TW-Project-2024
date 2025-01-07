@@ -1,6 +1,6 @@
 <?php
 require_once("bootstrap.php");
-require_once("functions.php");
+require_once("utils/functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
@@ -21,8 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $templateParams["erroreSignup"] = "Email già in uso";
             } else {
                 $dbh->insertUser($username, $email, $pw_hash, $name, $surname);
-                $_SESSION['username'] = $username;
-                header("Location: login.php");
+                $user = $dbh->getUserByEmail($email);
+                registerLoggedUser($user[0]);
+                header("Location: home.php");
             }
         }
     }
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $templateParams["titolo"] = "Registrazione";
-//$templateParams["nome"] = "signup-template.php";
-//require("template-base.php");
+$templateParams["nome"] = "template-signup.php";
+require("template/base.php");
 
 ?>

@@ -35,7 +35,7 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
-    public function insertUser($username, $email, $password){
+    public function insertUser($username, $email, $password, $name, $surname){
         $query = "INSERT INTO user (username, email, password, name, surname) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("sssss", $username, $email, $password, $name, $surname);

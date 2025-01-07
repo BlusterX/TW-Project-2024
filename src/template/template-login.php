@@ -7,7 +7,7 @@
                         <div class="col-10 col-md-6 text-center p-4 mb-4" style="background-color: #fce948; border-radius: 8px;">
                             <h2 class="fw-bold">Benvenuto!</h2>
                             <p class="mb-3">Se non hai un account:</p>
-                            <a href="registration.html" class="btn btn-warning fw-bold" style="color: #000000;">Registrati</a>
+                            <a href="signup.php" class="btn btn-warning fw-bold" style="color: #000000;">Registrati</a>
                         </div>
                     </div>
                 </div>
