@@ -3,7 +3,7 @@ require_once("bootstrap.php");
 require_once("functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])){
+    if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -17,13 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $templateParams["erroreSignup"] = "Formato email non valido";
         } else {
             // Check if the email is already in use
-            /* if() {
+            if(!empty($dbh->getUserByEmail($email))) {
                 $templateParams["erroreSignup"] = "Email già in uso";
             } else {
                 $dbh->insertUser($username, $email, $pw_hash, $name, $surname);
                 $_SESSION['username'] = $username;
                 header("Location: login.php");
-            } */
+            }
         }
     }
     else{
