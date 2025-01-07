@@ -11,7 +11,11 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         $templateParams["erroreLogin"] = "Credenziali non valide";
     } else {
         registerLoggedUser($user[0]);
-        header("Location: home.php");
+        if(isAdmin()) {
+            header("Location: admin.php");
+        } else {
+            header("Location: home.php");
+        }
     }
 }
 
