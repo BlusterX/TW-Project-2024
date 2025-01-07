@@ -1,16 +1,21 @@
 <?php
 require_once("bootstrap.php");
 
-$templateParams["nome"] = "template-login.php";
-
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
-    if(count($login_result) == 0){
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $user = $dbh->getUserByEmail($email);
+
+    // Check if the user exists and the password matches the encrypted one
+    if(empty($user) || !password_verify($password, $user[0]["password"])) {
         $templateParams["erroreLogin"] = "Credenziali non valide";
     } else {
-        registerLoggedUser($login_result[0]);
+        registerLoggedUser($user[0]);
+        header("Location: home.php");
     }
 }
+
+$templateParams["nome"] = "template-login.php";
 
 if (isUserLoggedIn()) {
     $templateParams["titolo"] = "Home";
