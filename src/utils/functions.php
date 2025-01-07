@@ -9,11 +9,16 @@ function isActive($pagename){
 function registerLoggedUser($user){
     $_SESSION["id_user"] = $user["id_user"];
     $_SESSION["username"] = $user["username"];
-    $_SESSION["nome"] = $user["nome"];
+    $_SESSION["name"] = $user["name"];
+    $_SESSION["is_admin"] = $user["is_admin"];
 }
 
 function isUserLoggedIn(){
     return !empty($_SESSION['id_user']);
+}
+
+function isAdmin() {
+    return isUserLoggedIn() && $_SESSION['is_admin'];
 }
 
 ?>

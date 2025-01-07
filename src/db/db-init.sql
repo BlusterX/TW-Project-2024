@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `user` (
     `password` VARCHAR(512) NOT NULL,
     `name` VARCHAR(50) NOT NULL,
     surname VARCHAR(50) NOT NULL,
+    is_admin BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (`id_user`),
     UNIQUE KEY (`username`)
 ) ENGINE = InnoDB;
