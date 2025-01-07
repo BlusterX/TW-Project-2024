@@ -17,12 +17,11 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
 
 $templateParams["nome"] = "template-login.php";
 
+// If the user is already logged in, redirect to the home page
+// TODO: profile page?
 if (isUserLoggedIn()) {
-    $templateParams["titolo"] = "Home";
-    // $templateParams["nome"]
-} else {
-    $templateParams["titolo"] = "Login";
-    // $templateParams["nome"]
+    header("Location: home.php");
 }
+
 require("template/base.php");
 ?>
