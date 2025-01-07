@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS cart (
     id_cart INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
     PRIMARY KEY (`id_cart`),
-    FOREIGN KEY (`id_user`) REFERENCES user(`id_user`),
+    FOREIGN KEY (`id_user`) REFERENCES user(`id_user`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS cart_product (
