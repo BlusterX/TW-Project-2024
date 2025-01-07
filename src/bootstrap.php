@@ -1,7 +1,7 @@
 <?php
 session_start();
-define("UPLOAD_DIR", "./upload/");
+define("UPLOAD_DIR", "img/");
 require_once("utils/functions.php");
 require_once("db/database.php");
-$dbh = new DatabaseHelper("localhost", "root", "", "sitotw", 3306);
+$dbh = new DatabaseHelper("localhost", "root", "", "twproject", 3306);
 ?>
