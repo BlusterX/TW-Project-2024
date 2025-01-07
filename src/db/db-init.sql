@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS `user` (
     id_user INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS product (
     price DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL DEFAULT 0,
     `description` TEXT,
-    img VARCHAR(100) NOT NULL
-    PRIMARY KEY ('id_product')
+    img VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`id_product`)
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS cart (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS cart_product (
     FOREIGN KEY (`id_product`) REFERENCES product(`id_product`)
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS order (
+CREATE TABLE IF NOT EXISTS `order` (
     id_order INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
     `date` DATE NOT NULL,
