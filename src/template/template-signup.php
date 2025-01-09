@@ -32,6 +32,9 @@
                                     <label for="password" class="form-label fw-semibold">Password</label>
                                     <input type="password" class="form-control" id="password" name="password" style="background-color: #fcefa1;" placeholder="Crea una password" required/>
                                 </div>
+                                <?php if(isset($templateParams["erroreSignup"])): ?>
+                                <p><?php echo $templateParams["erroreSignup"]; ?></p>
+                                <?php endif; ?>
                                 <!-- Bottone Registrati -->
                                 <button type="submit" class="btn fw-bold mt-2" style="background-color: #bd0000; color: #fff;">Registrati</button>
                             </form>

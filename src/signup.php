@@ -11,10 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $surname = $_POST['surname'];
 
         $pw_hash = password_hash($password, PASSWORD_DEFAULT);
-
+        
         // Check if the email format is valid
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $templateParams["erroreSignup"] = "Formato email non valido";
+        } elseif(!empty($dbh->getUserByUsername($username))) {
+            $templateParams["erroreSignup"] = "Username già in uso";
         } else {
             // Check if the email is already in use
             if(!empty($dbh->getUserByEmail($email))) {
