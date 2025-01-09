@@ -18,7 +18,7 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
         }
     }
 }
-
+$templateParams["titolo"] = "Login";
 $templateParams["nome"] = "template-login.php";
 
 // If the user is already logged in, redirect to the home page

@@ -20,7 +20,9 @@
         <!-- NAVBAR -->
         <nav class="navbar" style="background-color: #bd0000;">
             <div class="navbar-brand d-flex align-items-center ms-3">
-                <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="50"/>
+                <a <?php isActive('home.php') ?> href="home.php">
+                    <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="50"/>
+                </a>
                 <h1 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-4">
