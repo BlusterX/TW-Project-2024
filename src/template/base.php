@@ -26,9 +26,24 @@
                 <h1 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-4">
-                <a <?php isActive('login.php'); ?> href="login.php">
-                    <img class="me-4" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
-                </a>
+                <?php if (isUserLoggedIn()): ?>
+                    <div class="dropdown">
+                        <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="me-4" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userMenu">
+                            <p>Nome: <?php echo $_SESSION['name']; ?></p>
+                            <p>Username: <?php echo $_SESSION['username']; ?></p></li>
+                            <a href="logout.php">
+                                <button class="dropdown-item btn btn-danger">Logout</button>
+                            </a>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <a <?php isActive('login.php'); ?> href="login.php">
+                        <img class="me-4" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
+                    </a>
+                <?php endif; ?>
                 <a <?php isActive('shopping.php'); ?> href="shopping.php">
                     <img src="<?php echo UPLOAD_DIR . "shopping-cart.png" ; ?>" alt="Shopping-cart" width="40"/>
                 </a>
@@ -45,7 +60,6 @@
             <p class="mb-0">Contatti: support@jscommerce.com - Telefono: +39 123 456 7890</p>
         </footer>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
