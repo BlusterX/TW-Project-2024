@@ -29,7 +29,7 @@
                 <a <?php isActive('login.php'); ?> href="login.php">
                     <img class="me-4" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
                 </a>
-                <a href="">
+                <a <?php isActive('shopping.php'); ?> href="shopping.php">
                     <img src="<?php echo UPLOAD_DIR . "shopping-cart.png" ; ?>" alt="Shopping-cart" width="40"/>
                 </a>
             </div>
