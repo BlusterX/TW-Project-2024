@@ -21,34 +21,45 @@
         <nav class="navbar" style="background-color: #bd0000;">
             <div class="navbar-brand d-flex align-items-center ms-3">
                 <a <?php isActive('home.php') ?> href="home.php">
-                    <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="50"/>
+                    <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="40"/>
                 </a>
                 <h1 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-4">
-                <?php if (isUserLoggedIn()): ?>
-                    <div class="dropdown">
-                        <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="me-4" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userMenu">
-                            <p>Nome: <?php echo $_SESSION['name']; ?></p>
-                            <p>Username: <?php echo $_SESSION['username']; ?></p></li>
-                            <a href="login.php?logout=true">
-                                <button class="dropdown-item btn btn-danger">Logout</button>
-                            </a>
-                        </ul>
-                    </div>
-                <?php else: ?>
-                    <a <?php isActive('login.php'); ?> href="login.php">
-                        <img class="me-4" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
-                    </a>
-                <?php endif; ?>
-                <a <?php isActive('shopping.php'); ?> href="shopping.php">
-                    <img src="<?php echo UPLOAD_DIR . "shopping-cart.png" ; ?>" alt="Shopping-cart" width="40"/>
+            <?php if (isAdmin()): ?>
+                <a <?php isActive('admin.php'); ?> href="admin.php">
+                <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
                 </a>
+            <?php elseif (isUserLoggedIn()): ?>
+                <div class="dropdown">
+                    <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userMenu">
+                        <p>Nome: <?php echo $_SESSION['name']; ?></p>
+                        <p>Username: <?php echo $_SESSION['username']; ?></p></li>
+                        <a href="login.php?logout=true">
+                        <button class="dropdown-item btn btn-danger">Logout</button>
+                        </a>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <a <?php isActive('login.php'); ?> href="login.php">
+                <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
+                </a>
+            <?php endif; ?>
+            <a <?php isActive('shopping.php'); ?> href="shopping.php">
+                <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png" ; ?>" alt="Shopping-cart" width="40"/>
+            </a>
             </div>
         </nav>
+        <style>
+            @media (max-width: 576px) {
+            .icon {
+                width: 30px;
+            }
+            }
+        </style>
         <?php
         if(isset($templateParams["nome"])){
             require($templateParams["nome"]);
