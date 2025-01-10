@@ -26,12 +26,16 @@
             <td>€<?php echo $product["price"]; ?></td>
             <td><img src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>" width="60"></td>
             <td>
+            <a href="manage-product.php?action=mod&id=<?php echo $product["id_product"]; ?>">
             <button class="btn btn-warning btn-sm m-1">
               <i class="bi bi-pencil-square">Modifica</i>
             </button>
+            </a>
+            <a href="manage-product.php?action=del&id=<?php echo $product["id_product"]; ?>">
             <button class="btn btn-danger btn-sm m-1">
               <i class="bi bi-trash">Elimina</i>
             </button>
+            </a>
           </td>
         </tr>
         <?php endforeach; ?>

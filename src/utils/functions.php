@@ -20,29 +20,11 @@ function isUserLoggedIn(){
 function isAdmin() {
     return isUserLoggedIn() && $_SESSION['is_admin'];
 }
-/*
-function getAction($action){
-    $result = "";
-    switch($action){
-        case 1:
-            $result = "Inserisci";
-            break;
-        case 2:
-            $result = "Modifica";
-            break;
-        case 3:
-            $result = "Cancella";
-            break;
-    }
 
-    return $result;
-}
-
-function getEmptyArticle(){
-    return array("idprodotto" => "", "titolo" => "", "prezzo" => "","descrizione" => "", "img" => "",  "anteprimaprodotto" => "", "categorie" => array());
-}
-
-
+/* 
+Loads an image from the specified path; returns an array where the first element is the result
+(0 error, 1 success) and the second element is the error message or the image itself
+*/
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
@@ -51,23 +33,24 @@ function uploadImage($path, $image){
     $acceptedExtensions = array("jpg", "jpeg", "png", "gif");
     $result = 0;
     $msg = "";
-    //Controllo se immagine è veramente un'immagine
+    
+    // Check if it's actually an image
     $imageSize = getimagesize($image["tmp_name"]);
     if($imageSize === false) {
         $msg .= "File caricato non è un'immagine! ";
     }
-    //Controllo dimensione dell'immagine < 500KB
+    // Check dimension (max 500KB)
     if ($image["size"] > $maxKB * 1024) {
         $msg .= "File caricato pesa troppo! Dimensione massima è $maxKB KB. ";
     }
 
-    //Controllo estensione del file
+    // Check file extension
     $imageFileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
     if(!in_array($imageFileType, $acceptedExtensions)){
         $msg .= "Accettate solo le seguenti estensioni: ".implode(",", $acceptedExtensions);
     }
 
-    //Controllo se esiste file con stesso nome ed eventualmente lo rinomino
+    // Check if file name already exists, if so rename it
     if (file_exists($fullPath)) {
         $i = 1;
         do{
@@ -78,10 +61,10 @@ function uploadImage($path, $image){
         $fullPath = $path.$imageName;
     }
 
-    //Se non ci sono errori, sposto il file dalla posizione temporanea alla cartella di destinazione
+    // If there are no errors, move the file from the temporary location to the destination folder
     if(strlen($msg)==0){
         if(!move_uploaded_file($image["tmp_name"], $fullPath)){
-            $msg.= "Errore nel caricamento dell'immagine.";
+            $msg.= "Errore relativo alla directory.";
         }
         else{
             $result = 1;
@@ -90,5 +73,5 @@ function uploadImage($path, $image){
     }
     return array($result, $msg);
 }
-*/
+
 ?>

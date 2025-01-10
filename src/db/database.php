@@ -9,10 +9,10 @@ class DatabaseHelper {
         }      
     }
 
-    public function insertProduct($name, $price, $description, $img) {
-        $query = "INSERT INTO product (name, price, description, img) VALUES (?, ?, ?, ?)";
+    public function insertProduct($name, $price, $description, $img, $stock) {
+        $query = "INSERT INTO product (name, price, description, img, stock) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("siss", $name, $price, $description, $img);
+        $stmt->bind_param("sissi", $name, $price, $description, $img, $stock);
         $stmt->execute();
 
         return $stmt->insert_id;
