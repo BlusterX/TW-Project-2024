@@ -11,7 +11,6 @@
         <!-- PRODOTTI -->
         <main class="container my-4">
             <div class="row">
-                <!-- CARD 1 -->
                 <?php foreach ($templateParams["products"] as $product): ?>
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card card-custom text-white mb-4">
@@ -19,7 +18,8 @@
                             <img class="img-card-custom" src="<?php echo UPLOAD_DIR . "prova.png" ; ?>" alt="<?php echo $product["name"]; ?>"/>
                             <h4 class="card-title mt-3"><?php echo $product["name"]; ?></h5>
                             <p class="card-text fw-bolder">€<?php echo $product["price"]; ?></p>
-                            <a href="#" class="btn btn-warning fw-bold">Aggiungi</a>
+                            <!-- TODO: aggiunta al carrello per utenti loggati al posto di # -->
+                            <a href="<?php echo isUserLoggedIn() ? '' : 'login.php' ?>" class="btn btn-warning fw-bold">Aggiungi</a>
                         </div>
                     </div>
                 </div>
