@@ -34,7 +34,7 @@
                         <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userMenu">
                             <p>Nome: <?php echo $_SESSION['name']; ?></p>
                             <p>Username: <?php echo $_SESSION['username']; ?></p></li>
-                            <a href="logout.php">
+                            <a href="login.php?logout=true">
                                 <button class="dropdown-item btn btn-danger">Logout</button>
                             </a>
                         </ul>

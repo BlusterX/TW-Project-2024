@@ -24,10 +24,17 @@ $templateParams["nome"] = "template-login.php";
 
 // If the user is already logged in, redirect to the home page
 // TODO: profile page?
-if(isAdmin()){
-    header("Location: admin.php");
-} elseif(isUserLoggedIn()){
-    header("Location: home.php");
+if (isUserLoggedIn()){
+    if(isAdmin()){
+        header("Location: admin.php");
+    } else {
+        header("Location: home.php");
+    }
+
+    if(isset($_GET["logout"]) && $_GET["logout"] == true) {
+        session_unset();
+        header("Location: home.php");
+    }
 }
 
 require("template/base.php");
