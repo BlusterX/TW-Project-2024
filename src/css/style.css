@@ -1,0 +1,29 @@
+@media (max-width: 576px) {
+    .icon {
+        width: 30px;
+    }
+}
+
+.navbar-custom {
+    background-color: #bd0000;
+}
+
+.footer-custom{
+    background-color: #bd0000;
+}
+
+.offert-section-custom{
+    background-color: #fce948;
+}
+
+.img-offert-custom{
+    max-height: 200px;
+}
+
+.img-card-custom{
+    max-height: 100px;
+}
+
+.card-custom{
+    background-color: #bd0000;
+}
