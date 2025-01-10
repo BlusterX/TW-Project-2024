@@ -20,11 +20,12 @@
         </tr>
       </thead>
       <tbody>
+        <?php foreach ($templateParams["products"] as $product): ?>
         <tr>
-          <td>PlayStation 5</td>
-          <td>499,99€</td>
-          <td><img src="<?php echo UPLOAD_DIR . "prova.png" ; ?>" alt="PS5" width="60"></td>
-          <td>
+            <td><?php echo $product["name"]; ?></td>
+            <td>€<?php echo $product["price"]; ?></td>
+            <td><img src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>" width="60"></td>
+            <td>
             <button class="btn btn-warning btn-sm m-1">
               <i class="bi bi-pencil-square">Modifica</i>
             </button>
@@ -33,6 +34,7 @@
             </button>
           </td>
         </tr>
+        <?php endforeach; ?>
       </tbody>
     </table>
     <div class="d-flex justify-content-center mt-3">
