@@ -14,7 +14,7 @@
                     <div class="d-flex align-items-center justify-content-between p-4" style="background-color: #999; border-radius: 10px;">
                         <!-- Immagine + nome -->
                         <div class="d-flex flex-column align-items-center">
-                            <img src="img/prova.png" alt="Playstation 5" style="width:80px; height:auto;"/>
+                            <img src="<?php echo UPLOAD_DIR . "prova.png" ; ?>" alt="Playstation 5" style="max-width: 150px;"/>
                             <span class="mt-2 fw-bold">Playstation 5</span>
                         </div>
                         <div class="pe-4">
