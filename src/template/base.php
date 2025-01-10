@@ -37,9 +37,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userMenu">
                         <p>Nome: <?php echo $_SESSION['name']; ?></p>
-                        <p>Username: <?php echo $_SESSION['username']; ?></p></li>
+                        <p>Cognome: <?php echo $_SESSION['surname']; ?></p>
+                        <p>Username: <?php echo $_SESSION['username']; ?></p>
                         <a href="login.php?logout=true">
-                        <button class="dropdown-item btn btn-danger">Logout</button>
+                            <button class="dropdown-item btn btn-danger">Logout</button>
                         </a>
                     </ul>
                 </div>
@@ -59,7 +60,7 @@
         }
         ?>
         <!-- FOOTER -->
-        <footer class="text-center text-white p-4 footer-custom">
+        <footer class="text-center text-white p-4 footer-custom w-100">
             <p class="mb-1">© 2025 JS-Commerce. Tutti i diritti riservati.</p>
             <p class="mb-0">Contatti: support@jscommerce.com - Telefono: +39 123 456 7890</p>
         </footer>
