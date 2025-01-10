@@ -2,43 +2,42 @@
   <main class="container my-5">
     <h2 class="fw-bold mb-4">Gestione Prodotti</h2>
 
-    <!-- Bottone aggiungi prodotto -->
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-success mb-3">
-        <i class="bi bi-plus-lg"></i>
-        Aggiungi Prodotto
-      </button>
+        <a <?php isActive("addproduct.php")?> href="addproduct.php">
+          <button type="button" class="btn btn-success mb-3">
+            <i class="bi bi-plus-lg">Aggiungi Prodotto</i>
+          </button>
+        </a>
     </div>
 
-    <!-- Tabella prodotti -->
-    <table class="table table-bordered table-hover align-middle">
+    <table class="table table-bordered table-hover align-middle table-responsive-sm">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Prezzo</th>
-          <th>Descrizione</th>
           <th>Immagine</th>
           <th>Azioni</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Riga d'esempio. In produzione, itererai i prodotti dal DB -->
         <tr>
           <td>PlayStation 5</td>
           <td>499,99€</td>
-          <td>Nuova console Sony</td>
-          <td><img src="ps5.png" alt="PS5" width="60"></td>
+          <td><img src="<?php echo UPLOAD_DIR . "prova.png" ; ?>" alt="PS5" width="60"></td>
           <td>
-            <button class="btn btn-warning btn-sm">
-              <i class="bi bi-pencil-square"></i>
-              Modifica
+            <button class="btn btn-warning btn-sm m-1">
+              <i class="bi bi-pencil-square">Modifica</i>
             </button>
-            <button class="btn btn-danger btn-sm">
-              <i class="bi bi-trash"></i>
-              Elimina
+            <button class="btn btn-danger btn-sm m-1">
+              <i class="bi bi-trash">Elimina</i>
             </button>
           </td>
         </tr>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center mt-3">
+      <button class="btn btn-danger btn-md fw-bold">
+        Logout
+      </button>
+    </div>
   </main>
