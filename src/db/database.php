@@ -57,7 +57,8 @@ class DatabaseHelper {
 
     // Return all the available products
     public function getAllProducts() {
-        $query = "SELECT * FROM product";
+        $query = "SELECT * FROM product
+            ORDER BY name";
         $result = $this->db->query($query);
 
         return $result->fetch_all(MYSQLI_ASSOC);
