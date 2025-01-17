@@ -15,7 +15,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card card-custom text-white mb-4">
                         <div class="card-body text-center">
-                            <img class="img-card-custom" src="<?php echo UPLOAD_DIR . "prova.png" ; ?>" alt="<?php echo $product["name"]; ?>"/>
+                            <img class="img-card-custom" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"/>
                             <h4 class="card-title mt-3"><?php echo $product["name"]; ?></h5>
                             <p class="card-text fw-bolder">€<?php echo $product["price"]; ?></p>
                             <!-- TODO: aggiunta al carrello per utenti loggati al posto di # -->
