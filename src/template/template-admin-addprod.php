@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <h1 class="m-4">Aggiungi un nuovo prodotto</h1>
-    <form class="m-4" action="manage-product.php?action=add" method="POST" enctype="multipart/form-data">
+    <form class="m-4" action="admin-manage-product.php?action=add" method="POST" enctype="multipart/form-data">
         <div class="form-group mb-3">
             <label for="name">Nome del prodotto:</label>
             <input type="text" class="form-control" id="name" name="name" required/>

@@ -17,6 +17,9 @@ switch($_GET["action"]) {
             $_POST["description"], $msg, $_POST["stock"]);
         break;
     case "mod":
+        $dbh->updateProduct( $_POST["name"], $_POST["price"],
+        $_POST["description"], $_POST["stock"], $_GET["id"]);
+        header("location: admin.php");
         break;
     case "del":
         $dbh->deleteProduct($_GET["id"]);
