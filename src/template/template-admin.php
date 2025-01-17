@@ -3,7 +3,7 @@
     <h2 class="fw-bold mb-4">Gestione Prodotti</h2>
 
     <div class="d-flex justify-content-end">
-        <a <?php isActive("addproduct.php")?> href="addproduct.php">
+        <a <?php isActive("admin-addproduct.php")?> href="admin-addproduct.php">
           <button type="button" class="btn btn-success mb-3">
             <i class="bi bi-plus-lg">Aggiungi Prodotto</i>
           </button>
@@ -30,12 +30,12 @@
         <td class="d-none d-md-table-cell"><img class="img-fluid" style="max-width: 70px;" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"></td>
         <td class="d-none d-md-table-cell"><?php echo $product["description"]; ?></td>
         <td>
-            <a href="manage-product.php?action=mod&id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
+            <a <?php isActive("admin-modifica.php")?> href="admin-modifica.php?id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
               <button class="btn btn-warning btn-sm m-1">
-                <i class="bi bi-pencil-square">Modifica</i>
+              <i class="bi bi-pencil-square">Modifica</i>
               </button>
             </a>
-            <a href="manage-product.php?action=del&id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
+            <a href="admin-manage-product.php?action=del&id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
               <button class="btn btn-danger btn-sm m-1">
                 <i class="bi bi-trash">Elimina</i>
               </button>
@@ -47,9 +47,9 @@
     </table>
     <div class="d-flex justify-content-center mt-3">
         <a href="login.php?logout=true">
-      <button class="btn btn-danger btn-md fw-bold">
-        Logout
-      </button>
+          <button class="btn btn-danger btn-md fw-bold">
+            Logout
+          </button>
         </a>
     </div>
   </main>

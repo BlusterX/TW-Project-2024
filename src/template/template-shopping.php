@@ -26,13 +26,13 @@
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            
             <!-- TOTALE -->
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-end">
                     <span class="fw-bold fs-5 me-2">TOTALE:</span>
-                    <span class="fs-5 fw-bold">500€</span>
+                    <span class="fs-5 fw-bold">€<?php $tot = $tot+$product["price"]; echo $tot; ?></span>
                 </div>
             </div>
-            
+            <?php endforeach; ?>
         </main>
