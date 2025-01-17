@@ -22,6 +22,13 @@ function isAdmin() {
     return isUserLoggedIn() && $_SESSION['is_admin'];
 }
 
+function getUserId(){
+    if(!isUserLoggedIn()){
+        exit("User not logged in");
+    }
+    return $_SESSION["id_user"];
+}
+
 /* 
 Loads an image from the specified path; returns an array where the first element is the result
 (0 error, 1 success) and the second element is the error message or the image itself
