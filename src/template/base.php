@@ -39,10 +39,29 @@
                         <p>Nome: <?php echo $_SESSION['name']; ?></p>
                         <p>Cognome: <?php echo $_SESSION['surname']; ?></p>
                         <p>Username: <?php echo $_SESSION['username']; ?></p>
-                        <a href="login.php?logout=true">
-                            <button class="dropdown-item btn btn-danger">Logout</button>
-                        </a>
+                        <button class="dropdown-item btn btn-danger logoutButton">Logout</button>
                     </ul>
+                        <!-- Modal -->
+                        <div class="modal fade logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="logoutModalLabel">Sei sicuro di voler uscire?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">No</button>
+                                        <a href="login.php?logout=true" class="btn btn-danger w-25">Si</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            document.getElementsByClassName('logoutButton').addEventListener('click', function() {
+                                var logoutModal = new bootstrap.Modal(document.getElementsByClassName('logoutModal'));
+                                logoutModal.show();
+                            });
+                        </script>
                 </div>
             <?php else: ?>
                 <a <?php isActive('login.php'); ?> href="login.php">
