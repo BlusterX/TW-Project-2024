@@ -68,6 +68,13 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function createCart($userId) {
+        $query = "INSERT INTO cart (id_user) VALUES (?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        return $stmt->execute();
+    }
+
     // TODO: set quantity to 1 if not needed
     public function addProductToCart($userId, $productId, $quantity) {
         $query = "INSERT INTO cart_product (id_cart, id_product, quantity)

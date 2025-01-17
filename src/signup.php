@@ -25,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $dbh->insertUser($username, $email, $pw_hash, $name, $surname);
                 $user = $dbh->getUserByEmail($email);
                 registerLoggedUser($user[0]);
+                $dbh->createCart(getUserId()); // Initialize the cart instance for the new user
                 header("Location: home.php");
             }
         }
-    }
-    else{
+    } else {
         $templateParams["erroreSignup"] = "Tutti i campi sono obbligatori";
     }
 }
