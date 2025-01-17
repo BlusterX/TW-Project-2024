@@ -42,6 +42,10 @@ class DatabaseHelper {
     }
 
     public function updateProductStock($productId, $newQuantity) {
+        if($newQuantity < 0) {
+            exit("Stock cannot be negative");
+        }
+
         $query = "UPDATE product SET stock = ? WHERE id_product = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $newQuantity, $productId);
@@ -64,6 +68,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // TODO: set quantity to 1 if not needed
     public function addProductToCart($userId, $productId, $quantity) {
         $query = "INSERT INTO cart_product (id_cart, id_product, quantity)
             VALUES ((SELECT id_cart FROM cart WHERE id_user = ?), ?, ?)";
@@ -104,6 +109,35 @@ class DatabaseHelper {
             return (int) $row['quantity'];
         }
         return 0;
+    }
+
+    public function updateCartQuantity($userId, $productId, $newQuantity) {
+        if($newQuantity < 1) {
+            return $this->removeFromCart($userId, $productId);
+        }
+
+        $query = "UPDATE cart_product cp
+            JOIN cart c ON cp.id_cart = c.id_cart
+            JOIN user u ON c.id_user = u.id_user
+            SET cp.quantity = ?
+            WHERE u.id_user = ? AND cp.id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $newQuantity, $userId, $productId);
+        return $stmt->execute();
+    }
+
+    public function isProductInCart($userId, $productId) {
+        $query = "SELECT 1
+            FROM cart_product cp
+            JOIN cart c ON cp.id_cart = c.id_cart
+            JOIN user u ON c.id_user = u.id_user
+            WHERE u.id_user = ? AND cp.id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userId, $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows > 0;
     }
 
     public function removeFromCart($userId, $productId) {

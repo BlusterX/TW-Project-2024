@@ -19,7 +19,8 @@
                             <h4 class="card-title mt-3"><?php echo $product["name"]; ?></h5>
                             <p class="card-text fw-bolder">€<?php echo $product["price"]; ?></p>
                             <!-- TODO: aggiunta al carrello per utenti loggati al posto di # -->
-                            <a href="<?php echo isUserLoggedIn() ? '' : 'login.php' ?>" class="btn btn-warning fw-bold">Aggiungi</a>
+                            <a href="<?php echo isUserLoggedIn() ? 'add-to-cart.php?product_id=' . $product["id_product"]
+                                : 'login.php' ?>" class="btn btn-warning fw-bold">Aggiungi</a>
                         </div>
                     </div>
                 </div>
