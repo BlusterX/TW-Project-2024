@@ -147,8 +147,11 @@ class DatabaseHelper {
     }
 
     public function removeFromCart($userId, $productId) {
-        $query = "DELETE FROM cart_product
-            WHERE id_cart = ? AND id_product = ?";
+        $query = "DELETE cp
+            FROM cart_product cp
+            JOIN cart c ON cp.id_cart = c.id_cart
+            JOIN user u ON c.id_user = u.id_user
+            WHERE u.id_user = ? AND cp.id_product = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $userId, $productId);
         return $stmt->execute();

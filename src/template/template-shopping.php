@@ -6,6 +6,7 @@
                     <span class="fw-bold">Prodotto</span>
                     <span class="fw-bold">Quantità</span>
                     <span class="fw-bold">Prezzo</span>
+                    <span class="fw-bold"></span>
                 </div>
             </div>
             <?php
@@ -27,6 +28,11 @@
                         </div>
                         <!-- Prezzo -->
                         <span class="fs-5">€<?php echo $product["price"] * $product["quantity"]; ?></span>
+                        <!-- Pulsante Rimuovi -->
+                        <form method="POST" action="remove-from-cart.php" class="d-inline">
+                            <input type="hidden" name="product_id" value="<?php echo $product["id_product"]; ?>"/>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>Rimuovi</button>
+                        </form>
                     </div>
                 </div>
             </div>
