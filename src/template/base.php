@@ -16,7 +16,7 @@
 </head>
   
 <body>
-    <div class="container-fluid p-0">
+    <div class="d-flex flex-column min-vh-100 p-0">
         <!-- NAVBAR -->
         <nav class="navbar navbar-custom">
             <div class="navbar-brand d-flex align-items-center ms-3">
@@ -79,9 +79,10 @@
         }
         ?>
         <!-- FOOTER -->
-        <footer class="text-center text-white p-4 footer-custom w-100">
+        <footer class="text-center text-white p-4 footer-custom w-100 mt-auto">
             <p class="mb-1">© 2025 JS-Commerce. Tutti i diritti riservati.</p>
-            <p class="mb-0">Contatti: support@jscommerce.com - Telefono: +39 123 456 7890</p>
+            <p class="mb-0">Contatti: support@jscommerce.com</p>
+            <p class="mb-0">Telefono: +39 123 456 7890</p>
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
