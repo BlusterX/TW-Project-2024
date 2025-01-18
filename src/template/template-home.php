@@ -18,7 +18,7 @@
                             <img class="img-card-custom" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"/>
                             <h4 class="card-title mt-3"><?php echo $product["name"]; ?></h5>
                             <p class="card-text fw-bolder">€<?php echo $product["price"]; ?></p>
-                            <!-- TODO: aggiunta al carrello per utenti loggati al posto di # -->
+                            <!-- If user is not logged in, adding a product to cart redirects to login page -->
                             <a href="<?php echo isUserLoggedIn() ? 'add-to-cart.php?product_id=' . $product["id_product"]
                                 : 'login.php' ?>" class="btn btn-warning fw-bold">Aggiungi</a>
                         </div>
