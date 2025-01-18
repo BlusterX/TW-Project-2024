@@ -67,7 +67,16 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    // Initialize a cart instance for the given user
+    public function createCart($userId) {
+        $query = "INSERT INTO cart (id_user) VALUES (?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        return $stmt->execute();
+    }
     
+    // TODO: set quantity to 1 if not needed
     public function addProductToCart($userId, $productId, $quantity) {
         $query = "INSERT INTO cart_product (id_cart, id_product, quantity)
             VALUES ((SELECT id_cart FROM cart WHERE id_user = ?), ?, ?)";
@@ -76,9 +85,36 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function updateCartQuantity($userId, $productId, $newQuantity) {
+        if($newQuantity < 1) {
+            return $this->removeFromCart($userId, $productId);
+        }
+        $query = "UPDATE cart_product cp
+            JOIN cart c ON cp.id_cart = c.id_cart
+            JOIN user u ON c.id_user = u.id_user
+            SET cp.quantity = ?
+            WHERE u.id_user = ? AND cp.id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $newQuantity, $userId, $productId);
+        return $stmt->execute();
+    }
+
+    public function isProductInCart($userId, $productId) {
+        $query = "SELECT 1
+            FROM cart_product cp
+            JOIN cart c ON cp.id_cart = c.id_cart
+            JOIN user u ON c.id_user = u.id_user
+            WHERE u.id_user = ? AND cp.id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userId, $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
     // Retrieve products in given user's cart, with details and quantity
     public function getCartProducts($userId) {
-        $query = "SELECT p.id_product, p.name, p.price, cp.quantity
+        $query = "SELECT p.id_product, p.name, p.price, p.img, cp.quantity
             FROM cart_product cp
             JOIN product p ON cp.id_product = p.id_product
             JOIN cart c ON cp.id_cart = c.id_cart
