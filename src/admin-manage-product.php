@@ -22,7 +22,9 @@ switch($_GET["action"]) {
         header("location: admin.php");
         break;
     case "del":
-        $dbh->deleteProduct($_GET["id"]);
+        $productId = $_GET["id"];
+        $dbh->removeFromAllCarts($productId);
+        $dbh->deleteProduct($productId);
         break;
 }
 

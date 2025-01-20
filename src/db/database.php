@@ -157,6 +157,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function removeFromAllCarts($productId) {
+        $query = "DELETE FROM cart_product WHERE id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $productId);
+        return $stmt->execute();
+    }
+
     public function insertUser($username, $email, $password, $name, $surname){
         $query = "INSERT INTO user (username, email, password, name, surname) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
