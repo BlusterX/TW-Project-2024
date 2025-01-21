@@ -214,14 +214,21 @@ class DatabaseHelper {
     }
 
     public function deleteOrder($orderId) {
-        $query = "DELETE FROM order WHERE id_order = ?";
+        $query = "DELETE FROM `order` WHERE id_order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        return $stmt->execute();
+    }
+
+    public function deleteOrderedProducts($orderId) {
+        $query = "DELETE FROM order_product WHERE id_order = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $orderId);
         return $stmt->execute();
     }
 
     public function getAllOrders($userId) {
-        $query = "SELECT * FROM order WHERE id_user = ?";
+        $query = "SELECT * FROM `order` WHERE id_user = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $userId);
         $stmt->execute();

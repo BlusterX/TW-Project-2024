@@ -13,14 +13,14 @@ $orderId = $_GET["order_id"];
 $products = $dbh->getOrderedProducts($orderId);
 // Revert product stocks
 foreach($products as $product) {
-    $productId = $product["product_id"];
+    $productId = $product["id_product"];
     $quantity = $product["quantity"];
     $productStock = $dbh->getProductStock($productId);
     $dbh->updateProductStock($productId, $productStock + $quantity);
 }
+
+$dbh->deleteOrderedProducts($orderId); // Remove all instances of ordered products
 $dbh->deleteOrder($orderId);
 
-
-header("home.php");
-
+header("Location: home.php");
 ?>
