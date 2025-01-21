@@ -46,10 +46,8 @@
       </tbody>
     </table>
     <div class="d-flex justify-content-center mt-3">
-        <a href="login.php?logout=true">
-          <button class="btn btn-danger btn-md fw-bold">
+          <button class="btn btn-danger btn-md fw-bold logoutButton">
             Logout
           </button>
-        </a>
     </div>
   </main>

@@ -27,3 +27,7 @@
 .card-custom{
     background-color: #bd0000;
 }
+
+.custom-dropdown {
+    min-width: 250px;
+}

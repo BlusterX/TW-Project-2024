@@ -35,33 +35,12 @@
                     <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="userMenu">
-                        <p>Nome: <?php echo $_SESSION['name']; ?></p>
-                        <p>Cognome: <?php echo $_SESSION['surname']; ?></p>
-                        <p>Username: <?php echo $_SESSION['username']; ?></p>
+                    <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu">
+                        <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
+                            <p><strong><?php echo $label; ?>:</strong> <?php echo $_SESSION[$key]; ?></p>
+                        <?php endforeach; ?>
                         <button class="dropdown-item btn btn-danger logoutButton">Logout</button>
                     </ul>
-                        <!-- Modal -->
-                        <div class="modal fade logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="logoutModalLabel">Sei sicuro di voler uscire?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">No</button>
-                                        <a href="login.php?logout=true" class="btn btn-danger w-25">Si</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <script>
-                            document.getElementsByClassName('logoutButton')[0].addEventListener('click', function() {
-                                var logoutModal = new bootstrap.Modal(document.getElementsByClassName('logoutModal')[0]);
-                                logoutModal.show();
-                            });
-                        </script>
                 </div>
             <?php else: ?>
                 <a <?php isActive('login.php'); ?> href="login.php">
@@ -85,6 +64,7 @@
             <p class="mb-0">Telefono: +39 123 456 7890</p>
         </footer>
     </div>
+    <script src="js/logout.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
