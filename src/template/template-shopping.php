@@ -50,7 +50,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
-                    <a href="summary-order.php">
+                    <a href="generate-order.php?cart_id=<?php echo $templateParams['cart_id']; ?>">
                         <button type="submit" class="btn btn-success btn-lg">Completa acquisto</button>
                     </a>
                 </div>
