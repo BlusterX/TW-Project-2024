@@ -4,16 +4,17 @@
     }
 }
 
+body{
+    background-color: #F5F5F5;
+    font-family: 'Roboto', sans-serif;
+}
+
 .navbar-custom {
-    background-color: #bd0000;
+    background-color: #8B0000;
 }
 
 .footer-custom{
-    background-color: #bd0000;
-}
-
-.offert-section-custom{
-    background-color: #fce948;
+    background-color: #8B0000;
 }
 
 .img-offert-custom{
@@ -25,9 +26,25 @@
 }
 
 .card-custom{
-    background-color: #bd0000;
+    background-color: #8B0000;
 }
 
 .custom-dropdown {
     min-width: 250px;
+}
+
+.btn-custom {
+    background-color: #F4A261;
+}
+
+.card-custom{
+    color: #333333;
+}
+
+.offert-text-custom{
+    color: #ffffff;
+}
+
+.mouseover-custom:hover {
+    background-color: rgb(255, 178, 208);
 }
