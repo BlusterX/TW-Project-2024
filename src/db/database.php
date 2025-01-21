@@ -59,6 +59,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function updateProduct($name, $price, $description, $stock, $id) {
+        $query = "UPDATE product SET name = ?, price = ?, description = ?, stock = ? WHERE id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sisii", $name, $price, $description, $stock, $id);
+        return $stmt->execute();
+    }
+
     // Return all the available products
     public function getAllProducts() {
         $query = "SELECT * FROM product
@@ -74,6 +81,19 @@ class DatabaseHelper {
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $userId);
         return $stmt->execute();
+    }
+
+    public function getCartId($userId) {
+        $query = "SELECT id_cart FROM cart WHERE id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($row = $result->fetch_assoc()) {
+            return (int) $row['id_cart'];
+        }
+        return 0;
     }
     
     // TODO: set quantity to 1 if not needed
@@ -164,6 +184,52 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function createOrder($userId) {
+        $query = "INSERT INTO `order` (id_user, `date`) VALUES (?, NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        return $stmt->insert_id;
+    }
+
+    public function addProductToOrder($orderId, $productId, $quantity, $price) {
+        $query = "INSERT INTO order_product (id_order, id_product, quantity, price)
+            VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iiid', $orderId, $productId, $quantity, $price);
+        return $stmt->execute();
+    }
+
+    public function getOrderedProducts($orderId) {
+        $query = "SELECT p.id_product, p.name, p.price, p.img, op.quantity
+            FROM order_product op
+            JOIN product p ON op.id_product = p.id_product
+            WHERE op.id_order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteOrder($orderId) {
+        $query = "DELETE FROM order WHERE id_order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        return $stmt->execute();
+    }
+
+    public function getAllOrders($userId) {
+        $query = "SELECT * FROM order WHERE id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function insertUser($username, $email, $password, $name, $surname){
         $query = "INSERT INTO user (username, email, password, name, surname) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -203,11 +269,29 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateProduct($name, $price, $description, $stock, $id) {
-        $query = "UPDATE product SET name = ?, price = ?, description = ?, stock = ? WHERE id_product = ?";
+    public function generateNotification($userId, $message) {
+        $query = "INSERT INTO notification (id_user, message)
+            VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sisii", $name, $price, $description, $stock, $id);
+        $stmt->bind_param('is', $userId, $message);
         return $stmt->execute();
+    }
+
+    public function markNotificationAsRead($notificationId) {
+        $query = "UPDATE notification SET `read` = 1 WHERE id_notification = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $notificationId);
+        return $stmt->execute();
+    }
+
+    public function getUserNotifications($userId) {
+        $query = "SELECT * FROM notification WHERE id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 
