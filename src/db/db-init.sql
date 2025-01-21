@@ -44,6 +44,16 @@ CREATE TABLE IF NOT EXISTS `order` (
     FOREIGN KEY (`id_user`) REFERENCES user(`id_user`)
 ) ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS order_product (
+    id_order INT NOT NULL,
+    id_product INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    price DECIMAL(10, 2) NOT NULL, -- Price at the moment of the order
+    PRIMARY KEY (`id_order`, `id_product`),
+    FOREIGN KEY (`id_order`) REFERENCES `order`(`id_order`),
+    FOREIGN KEY (`id_product`) REFERENCES product(`id_product`)
+) ENGINE = InnoDB;
+
 CREATE TABLE IF NOT EXISTS notification (
     id_notification INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
