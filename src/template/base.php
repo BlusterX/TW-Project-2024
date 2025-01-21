@@ -57,8 +57,8 @@
                             </div>
                         </div>
                         <script>
-                            document.getElementsByClassName('logoutButton').addEventListener('click', function() {
-                                var logoutModal = new bootstrap.Modal(document.getElementsByClassName('logoutModal'));
+                            document.getElementsByClassName('logoutButton')[0].addEventListener('click', function() {
+                                var logoutModal = new bootstrap.Modal(document.getElementsByClassName('logoutModal')[0]);
                                 logoutModal.show();
                             });
                         </script>
