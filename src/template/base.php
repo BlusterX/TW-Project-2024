@@ -9,10 +9,13 @@
         echo " - " . "$templateParams[titolo]";
     }
     ?></title>
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Roboto font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
   
 <body>
@@ -26,6 +29,9 @@
                 <h1 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-4">
+            <a <?php isActive('notifications.php') ?> href="notifications.php">
+                <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications" width="40"/>
+            </a> 
             <?php if (isAdmin()): ?>
                 <a <?php isActive('admin.php'); ?> href="admin.php">
                 <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
@@ -35,11 +41,14 @@
                     <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                         <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png";?>" alt="Login" width="40"/>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu">
+                    <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu" style="border: 5px solid #ccc; border-radius: 10px; padding: 10px;">
                         <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
                             <p><strong><?php echo $label; ?>:</strong> <?php echo $_SESSION[$key]; ?></p>
                         <?php endforeach; ?>
-                        <button class="dropdown-item btn btn-danger logoutButton">Logout</button>
+                        <a <?php isActive('your-orders.php'); ?> href="your-orders.php">
+                            <button class="dropdown-item mouseover-custom">Riepilogo ordini</button>
+                        </a>
+                        <button class="dropdown-item logoutButton mouseover-custom">Logout</button>
                     </ul>
                 </div>
             <?php else: ?>
