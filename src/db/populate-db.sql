@@ -3,3 +3,6 @@ INSERT INTO `user` (username, email, password, name, surname) VALUES
 
 INSERT INTO product (`name`, price, stock, `description`, img) VALUES
 ('PlayStation 5', 499.99, 10, '', 'prova.png');
+
+INSERT INTO notification (id_user, `message`, is_read) VALUES
+(9, 'Test notification', 0);
