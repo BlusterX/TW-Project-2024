@@ -82,4 +82,8 @@ function uploadImage($path, $image){
     return array($result, $msg);
 }
 
+function formatDate($date){
+    return date("d/m/Y H:i:s", strtotime($date));
+}
+
 ?>
