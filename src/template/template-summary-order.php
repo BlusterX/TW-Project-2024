@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="text-center my-3">
-                <a href="your-orders.php">
+                <a href="your-orders.php?order_id=<?php echo $templateParams["order_id"]; ?>">
                     <button class="btn btn-success btn-lg w-100 mb-3">Paga ora</button>
                 </a>
                 <a href="cancel-order.php?order_id=<?php echo $templateParams["order_id"]; ?>">

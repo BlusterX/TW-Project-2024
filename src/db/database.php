@@ -185,14 +185,9 @@ class DatabaseHelper {
     }
 
     public function createOrder($userId) {
-        $timestamp = time();
-        $date = date('Y-m-d H:i:s', $timestamp);
-        // Shipping is simulated to be between 10 and 30 seconds after the order
-        $shippingDate = date('Y-m-d H:i:s', $timestamp + rand(10, 30));
-
-        $query = "INSERT INTO `order` (id_user, `date`, date_shipping) VALUES (?, ?, ?)";
+        $query = "INSERT INTO `order` (id_user, `date`) VALUES (?, NOW())";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('iss', $userId, $date, $shippingDate);
+        $stmt->bind_param('i', $userId);
         $stmt->execute();
         return $stmt->insert_id;
     }
@@ -202,6 +197,14 @@ class DatabaseHelper {
             VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iiid', $orderId, $productId, $quantity, $price);
+        return $stmt->execute();
+    }
+
+    public function generateShippingDate($orderId) {
+        $shippingDate = date('Y-m-d H:i:s', time() + rand(10, 30));
+        $query = "UPDATE `order` SET date_shipping = ? WHERE id_order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $shippingDate, $orderId);
         return $stmt->execute();
     }
 
@@ -291,11 +294,10 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function generateNotification($userId, $message) {
-        $query = "INSERT INTO notification (id_user, message)
-            VALUES (?, ?)";
+    public function createNotification($userId, $title, $message){
+        $query = "INSERT INTO notification (id_user, title, `message`) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('is', $userId, $message);
+        $stmt->bind_param("iss", $userId, $title, $message);
         return $stmt->execute();
     }
 
@@ -323,13 +325,6 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function addNotification($userId, $title, $message, $is_read){
-        $query = "INSERT INTO notification (id_user, title, `message`, is_read) VALUES (?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("issi", $userId, $title, $message, $is_read);
-        return $stmt->execute();
     }
 
 }
