@@ -315,6 +315,23 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getIdOrder($userId){
+        $query = "SELECT id_order FROM `order` WHERE id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addNotification($userId, $message, $is_read){
+        $query = "INSERT INTO notification (id_user, `message`, is_read) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isi", $userId, $message, $is_read);
+        return $stmt->execute();
+    }
+
 }
 
 ?>
