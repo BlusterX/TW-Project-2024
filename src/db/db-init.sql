@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS cart_product (
 CREATE TABLE IF NOT EXISTS `order` (
     id_order INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
-    `date` DATE NOT NULL,
+    `date` DATETIME NOT NULL,
+    date_shipping DATETIME DEFAULT NULL,
     PRIMARY KEY (`id_order`),
     FOREIGN KEY (`id_user`) REFERENCES user(`id_user`)
 ) ENGINE = InnoDB;
