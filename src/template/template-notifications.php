@@ -4,27 +4,29 @@
 <?php if (empty($templateParams["notifiche"])) { ?>
     <h1 class="text-center pt-4">Non ci sono notifiche</h1>
 <?php } else { ?>
+<main class="container mt-4">
     <?php
-    foreach ($templateParams["notifiche"] as $notifica):
+        foreach ($templateParams["notifiche"] as $notifica):
         $codNotifica = $notifica["id_notification"];
         $testoNotifica = $notifica["message"];
-        ?>
-<main class="container my-4">
+        $accordionId = "collapseSuccess" . $codNotifica;
+        $headerId = "successNotification" . $codNotifica;
+    ?>
     <div class="accordion" id="notificationsAccordion">
         <div class="accordion-item">
-            <h2 class="accordion-header" id="successNotification">
-                <button class="accordion-button text-success fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuccess" aria-expanded="false" aria-controls="collapseSuccess">
+            <h2 class="accordion-header" id="<?php echo $headerId; ?>">
+                <button class="accordion-button text-success fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $accordionId; ?>" aria-expanded="false" aria-controls="<?php echo $accordionId; ?>">
                     <strong class="me-2">#<?php echo $codNotifica; ?></strong>
                     Ordine arrivato a destinazione
                 </button>
             </h2>
-            <div id="collapseSuccess" class="accordion-collapse collapse" aria-labelledby="successNotification" data-bs-parent="#notificationsAccordion">
+            <div id="<?php echo $accordionId; ?>" class="accordion-collapse collapse" aria-labelledby="<?php echo $headerId; ?>" data-bs-parent="#notificationsAccordion">
                 <div class="accordion-body">
                     <?php echo $testoNotifica; ?>
                 </div>
             </div>
         </div>
     </div>
-</main>
-<?php endforeach;
+    <?php endforeach;
 } ?>
+</main>
