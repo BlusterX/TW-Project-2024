@@ -185,9 +185,14 @@ class DatabaseHelper {
     }
 
     public function createOrder($userId) {
-        $query = "INSERT INTO `order` (id_user, `date`) VALUES (?, NOW())";
+        $timestamp = time();
+        $date = date('Y-m-d H:i:s', $timestamp);
+        // Shipping is simulated to be between 30 and 90 seconds after the order
+        $shippingDate = date('Y-m-d H:i:s', $timestamp + rand(30, 90));
+
+        $query = "INSERT INTO `order` (id_user, `date`, date_shipping) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $userId);
+        $stmt->bind_param('iss', $userId, $date, $shippingDate);
         $stmt->execute();
         return $stmt->insert_id;
     }
@@ -229,6 +234,16 @@ class DatabaseHelper {
 
     public function getAllOrders($userId) {
         $query = "SELECT * FROM `order` WHERE id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllOrdersNewestFirst($userId) {
+        $query = "SELECT * FROM `order` WHERE id_user = ? ORDER BY id_order DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $userId);
         $stmt->execute();
