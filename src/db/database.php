@@ -187,8 +187,8 @@ class DatabaseHelper {
     public function createOrder($userId) {
         $timestamp = time();
         $date = date('Y-m-d H:i:s', $timestamp);
-        // Shipping is simulated to be between 30 and 90 seconds after the order
-        $shippingDate = date('Y-m-d H:i:s', $timestamp + rand(30, 90));
+        // Shipping is simulated to be between 10 and 30 seconds after the order
+        $shippingDate = date('Y-m-d H:i:s', $timestamp + rand(10, 30));
 
         $query = "INSERT INTO `order` (id_user, `date`, date_shipping) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
