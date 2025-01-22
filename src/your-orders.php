@@ -1,8 +1,14 @@
 <?php
 require_once("bootstrap.php");
 
+if(!isUserLoggedIn()) {
+    header("Location: login.php");
+}
+
 $templateParams["titolo"] = "I tuoi ordini";
 $templateParams["nome"] = "template-your-orders.php";
-$templateParams["products"] = $dbh->getCartProducts(getUserId());
+$templateParams["orders"] = $dbh->getAllOrdersNewestFirst(getUserId());
+$templateParams["js"] = array("js/order-status.js");
+
 require("template/base.php");
 ?>
