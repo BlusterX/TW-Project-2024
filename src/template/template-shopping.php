@@ -48,6 +48,7 @@
                     <span class="fs-5 fw-bold">€<?php echo $tot; ?></span>
                 </div>
             </div>
+            <?php if($tot != 0){ ?>
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
                     <a href="generate-order.php?cart_id=<?php echo $templateParams['cart_id']; ?>">
@@ -55,4 +56,5 @@
                     </a>
                 </div>
             </div>
+            <?php } ?>
         </main>
