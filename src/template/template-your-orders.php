@@ -3,43 +3,43 @@
 </header>
 <main class="container my-4">
     <div class="accordion orderAccordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                    Ordine 1
-                </button>
-            </h2>
-            <div class="accordion-collapse collapse collapseOne1" aria-labelledby="headingOne1">
-                <div class="accordion-body">
-                    <div class="mb-2">Data effettuazione: 1/01/2021</div>
-                    <div class="mb-2">Data spedizione: 1/01/2021</div>
-                    <div class="mb-2">Orario effettuazione: 12:35:21</div>
-                    <?php $num=0; foreach ($templateParams["products"] as $product): ?>
-                    <div class="mb-2"><?php echo $num+=1 ?>° Prodotto: <?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> </div>
-                    <?php endforeach; ?>
-                    Stato: <span class="badge bg-success">Completato</span>
+        <?php foreach ($templateParams["orders"] as $order):
+            $orderDate = formatDate($order["date"]);
+            $shippingDate = formatDate($order["date_shipping"]);
+            $products = $dbh->getOrderedProducts($order["id_order"]); ?>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse<?php echo $order['id_order']; ?>"
+                        aria-expanded="false" aria-controls="collapse<?php echo $order["id_order"]; ?>">
+                        Ordine #<?php echo $order["id_order"]; ?>
+                    </button>
+                </h2>
+                <div id="collapse<?php echo $order['id_order']; ?>" class="accordion-collapse collapse"
+                    aria-labelledby="heading<?php echo $order["id_order"]; ?>">
+                    <div class="accordion-body">
+                        <div class="mb-2">Data effettuazione: <?php echo $orderDate ?></div>
+                        <div class="mb-2">Data spedizione:
+                            <span class="shipping-date" data-date="<?php echo $order['date_shipping']; ?>">
+                                <?php echo $shippingDate ?>
+                            </span>
+                        </div>
+                        <!-- Default state -->
+                        Stato: <span class="badge bg-warning status-badge">In elaborazione</span>
+                        <h5 class="mt-3">Prodotti:</h5>
+                        <?php if (!empty($products)): ?>
+                            <?php foreach ($products as $product): ?>
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>" style="width: 80px; height: auto; object-fit: cover; margin-right: 10px;">
+                                    <span><?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo $product["price"]; ?>)</span>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>Non ci sono prodotti in questo ordine.</p>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="accordion orderAccordion">
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
-                    Ordine 2
-                </button>
-            </h2>
-            <div class="accordion-collapse collapse collapseOne2" aria-labelledby="headingOne2">
-                <div class="accordion-body">
-                    <div class="mb-2">Data effettuazione: 1/01/2021</div>
-                    <div class="mb-2">Data spedizione: 1/01/2021</div>
-                    <div class="mb-2">Orario effettuazione: 12:35:21</div>
-                    <?php $num=0; foreach ($templateParams["products"] as $product): ?>
-                    <div class="mb-2"><?php echo $num+=1 ?>° Prodotto: <?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> </div>
-                    <?php endforeach; ?>
-                    Stato: <span class="badge bg-success">Completato</span>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </main>
