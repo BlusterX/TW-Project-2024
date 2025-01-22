@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS order_product (
 CREATE TABLE IF NOT EXISTS notification (
     id_notification INT NOT NULL AUTO_INCREMENT,
     id_user INT NOT NULL,
+    title TEXT NOT NULL,
     `message` TEXT NOT NULL,
     is_read BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (`id_notification`),

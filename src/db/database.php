@@ -325,10 +325,10 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addNotification($userId, $message, $is_read){
-        $query = "INSERT INTO notification (id_user, `message`, is_read) VALUES (?, ?, ?)";
+    public function addNotification($userId, $title, $message, $is_read){
+        $query = "INSERT INTO notification (id_user, title, `message`, is_read) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("isi", $userId, $message, $is_read);
+        $stmt->bind_param("issi", $userId, $title, $message, $is_read);
         return $stmt->execute();
     }
 
