@@ -14,6 +14,6 @@ $templateParams["titolo"] = "Dettaglio ordine";
 $templateParams["nome"] = "template-summary-order.php";
 $templateParams["order_id"] = $orderId;
 $templateParams["products"] = $dbh->getOrderedProducts($orderId);
-
+$templateParams["js"] = array("js/logout.js");
 require("template/base.php");
 ?>
