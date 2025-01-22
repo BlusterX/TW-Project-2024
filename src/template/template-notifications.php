@@ -8,7 +8,6 @@
     <?php
         foreach ($templateParams["notifiche"] as $notifica):
         $codNotifica = $notifica["id_notification"];
-        $testoNotifica = $notifica["message"];
         $accordionId = "collapseSuccess" . $codNotifica;
         $headerId = "successNotification" . $codNotifica;
     ?>
@@ -16,13 +15,12 @@
         <div class="accordion-item">
             <h2 class="accordion-header" id="<?php echo $headerId; ?>">
                 <button class="accordion-button text-success fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $accordionId; ?>" aria-expanded="false" aria-controls="<?php echo $accordionId; ?>">
-                    <strong class="me-2">#<?php echo $codNotifica; ?></strong>
-                    Ordine arrivato a destinazione
+                    <?php echo $notifica["title"]; ?>
                 </button>
             </h2>
             <div id="<?php echo $accordionId; ?>" class="accordion-collapse collapse" aria-labelledby="<?php echo $headerId; ?>" data-bs-parent="#notificationsAccordion">
                 <div class="accordion-body">
-                    <?php echo $testoNotifica; ?>
+                    <?php echo $notifica["message"]; ?>
                 </div>
             </div>
         </div>

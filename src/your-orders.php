@@ -14,7 +14,7 @@ if(isset($_GET["order_id"])) {
 
     $notificationMessage = "Prodotti ordinati:";
     foreach($products as $product) {
-        $notificationMessage = $notificationMessage . "\n" . $product["name"] . " x" . $product["quantity"];
+        $notificationMessage .= "<br/>" . $product["name"] . " x" . $product["quantity"];
     }
     $dbh->createNotification(getUserId(), $notificationTitle, $notificationMessage);
 }

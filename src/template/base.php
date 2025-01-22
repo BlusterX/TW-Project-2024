@@ -30,6 +30,10 @@
             </div>
             <div class="d-flex ms-auto me-4">
                 <a <?php isActive('notifications.php') ?> href="notifications.php">
+                    <span class="bi bi-bell"></span><span class="position-absolute 
+                    translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"><span 
+                    class="visually-hidden">unread messages</span>
+                    </span>
                     <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications" width="40" />
                 </a>
                 <?php if (isAdmin()): ?>
