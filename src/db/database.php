@@ -59,10 +59,10 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
-    public function updateProduct($name, $price, $description, $stock, $id) {
-        $query = "UPDATE product SET name = ?, price = ?, description = ?, stock = ? WHERE id_product = ?";
+    public function updateProduct($name, $price, $discount, $description, $stock, $id) {
+        $query = "UPDATE product SET name = ?, price = ?, discount = ?, description = ?, stock = ? WHERE id_product = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sisii", $name, $price, $description, $stock, $id);
+        $stmt->bind_param("siisii", $name, $price, $discount, $description, $stock, $id);
         return $stmt->execute();
     }
 
@@ -355,6 +355,13 @@ class DatabaseHelper {
             return $row['username'];
         }
         return null;
+    }
+
+    public function getProductWithDiscount() {
+        $query = "SELECT * FROM product WHERE discount > 0";
+        $result = $this->db->query($query);
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 

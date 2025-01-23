@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS product (
 	id_product INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(200) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    discount DECIMAL(2, 2) DEFAULT 0.00,
+    discount INT NOT NULL DEFAULT 0,
     stock INT NOT NULL DEFAULT 0,
     `description` TEXT,
     img VARCHAR(100) NOT NULL,
