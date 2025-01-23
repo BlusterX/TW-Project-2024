@@ -39,6 +39,7 @@ body{
 
 .card-custom{
     color: #333333;
+    min-height: 350px;
 }
 
 .offert-text-custom{
