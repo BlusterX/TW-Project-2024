@@ -29,10 +29,25 @@
                                 if($product["discount"] > 0){
                                     $discountedPrice = $product["price"] - ($product["price"] * $product["discount"] / 100); 
                             ?>
-                            <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?></p>
-                            <p class="card-text fw-bolder fs-5">€<?php echo number_format($discountedPrice, 2); ?> (sconto <?php echo $product["discount"] ?>%)</p>
+                            <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?>
+                            <?php if (!empty($product['description'])): ?>
+                                <i class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
+                                    <img class="img-fluid" style="width: 20px; vertical-align: middle;" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
+                                </i>
+                            <?php endif; ?>
+                            </p>
+                            <p class="card-text fw-bolder fs-5">€<?php echo number_format($discountedPrice, 2); ?> (-<?php echo $product["discount"] ?>%)</p>
                             <?php } else { ?>
-                                <p class="card-text fs-5 mt-5">€<?php echo $product["price"]; ?></p>
+                                <p class="card-text">Prezzo attuale:</p>
+                                <p class="card-text fw-bolder fs-5">
+                                    €<?php echo $product["price"]; ?>
+                                    <?php if (!empty($product['description'])): ?>
+                                        <i class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
+                                            <img class="img-fluid" style="width: 20px; vertical-align: middle;" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
+                                        </i>
+                                    <?php endif; ?>
+                                </p>
+                                
                             <?php } ?>
                             <?php if ($product["stock"] > 0): ?>
                                 <p class="card-text fw-bolder">Rimasti: <?php echo $product["stock"]; ?></p>
