@@ -9,7 +9,17 @@
 
         <div class="form-group mb-3">
             <label for="price">Prezzo:</label>
-            €<input type="number" class="form-control" id="price" name="price" step="0.01" value="<?php echo $product["price"];  ?>" required/>
+            €<input type="number" class="form-control" id="price" name="price" step="0.01" value="<?php echo $product["price"] ;  ?>" required/>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="discount">Sconto (%):</label>
+            <input type="number" class="form-control" id="discount" name="discount" step="1" value="<?php echo (int)$product["discount"]; ?>" min="0" max="99" required/>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="final_price">Prezzo finale (con sconto):</label>
+            <input type="text" class="form-control" id="final_price" readonly/>
         </div>
 
         <div class="form-group mb-3">
