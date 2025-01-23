@@ -33,7 +33,11 @@
                                 value=<?php echo $product["quantity"]; ?> min="1" readonly/>
                         </div>
                         <!-- Prezzo -->
-                        <span class="fs-5">€<?php echo $product["price"] * $product["quantity"]; ?></span>
+                        <?php 
+                        $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
+                        $totalPrice = number_format($discountPrice * $product["quantity"], 2, '.', ''); ?>
+                        <span class="fs-5">€<?php echo $totalPrice; ?></span>
+                         
                         <!-- Pulsante Rimuovi -->
                         <form method="POST" action="remove-from-cart.php" class="d-inline">
                             <input type="hidden" name="product_id" value="<?php echo $product["id_product"]; ?>"/>
@@ -43,7 +47,7 @@
                 </div>
             </div>
             <?php 
-            $tot += $product["price"] * $product["quantity"];
+            $tot += $totalPrice;
             endforeach;
             ?>
             

@@ -30,8 +30,11 @@
                         <?php if (!empty($products)): ?>
                             <?php foreach ($products as $product): ?>
                                 <div class="d-flex align-items-center mb-3">
+                                    <?php 
+                                        $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
+                                    ?>
                                     <img src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>" style="width: 80px; height: auto; object-fit: cover; margin-right: 10px;">
-                                    <span><?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo $product["price"]; ?>)</span>
+                                    <span><?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo $discountPrice; ?>)</span>
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>

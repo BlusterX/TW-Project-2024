@@ -13,9 +13,12 @@
                     $tot = 0;
                     $num_prod=0;
                     foreach ($templateParams["products"] as $product): ?>
-                    <p class="card-text"><strong><?php echo ++$num_prod; ?>° Prodotto:</strong> <?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo $product["price"]*$product["quantity"]; ?>)</p>
+                    <?php 
+                    $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
+                     ?>
+                    <p class="card-text"><strong><?php echo ++$num_prod; ?>° Prodotto:</strong> <?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo number_format($discountPrice * $product["quantity"], 2, '.', ''); ?>)</p>
                     <?php
-                    $tot += $product["price"] * $product["quantity"];
+                    $tot += $discountPrice * $product["quantity"];
                     endforeach; ?>
                     <p class="card-text"><strong>Prezzo totale:</strong> €<?php echo $tot; ?></p>
                 </div>

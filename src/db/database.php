@@ -9,10 +9,10 @@ class DatabaseHelper {
         }      
     }
 
-    public function insertProduct($name, $price, $description, $img, $stock) {
-        $query = "INSERT INTO product (name, price, description, img, stock) VALUES (?, ?, ?, ?, ?)";
+    public function insertProduct($name, $price, $discount, $description, $img, $stock) {
+        $query = "INSERT INTO product (name, price, discount, description, img, stock) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sissi", $name, $price, $description, $img, $stock);
+        $stmt->bind_param("siissi", $name, $price, $discount, $description, $img, $stock);
         $stmt->execute();
 
         return $stmt->insert_id;
@@ -141,7 +141,7 @@ class DatabaseHelper {
 
     // Retrieve products in given user's cart, with details and quantity
     public function getCartProducts($userId) {
-        $query = "SELECT p.id_product, p.name, p.price, p.img, cp.quantity
+        $query = "SELECT p.id_product, p.name, p.price, p.discount, p.img, cp.quantity
             FROM cart_product cp
             JOIN product p ON cp.id_product = p.id_product
             JOIN cart c ON cp.id_cart = c.id_cart
@@ -216,7 +216,7 @@ class DatabaseHelper {
     }
 
     public function getOrderedProducts($orderId) {
-        $query = "SELECT p.id_product, p.name, p.price, p.img, op.quantity
+        $query = "SELECT p.id_product, p.name, p.price, p.discount, p.img, op.quantity
             FROM order_product op
             JOIN product p ON op.id_product = p.id_product
             WHERE op.id_order = ?";

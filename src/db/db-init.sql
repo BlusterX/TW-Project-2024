@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS order_product (
     id_product INT NOT NULL,
     quantity INT NOT NULL DEFAULT 1,
     price DECIMAL(10, 2) NOT NULL, -- Price at the moment of the order
+    discount INT NOT NULL DEFAULT 0,
     PRIMARY KEY (`id_order`, `id_product`),
     FOREIGN KEY (`id_order`) REFERENCES `order`(`id_order`),
     FOREIGN KEY (`id_product`) REFERENCES product(`id_product`)
