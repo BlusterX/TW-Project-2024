@@ -1,3 +1,4 @@
+
 function updateStatus(order) {
     const shippingDateElem = order.querySelector(".shipping-date");
     const statusElem = order.querySelector(".status-badge");
@@ -5,13 +6,15 @@ function updateStatus(order) {
     const shippingDate = new Date(shippingDateElem.dataset.date);
     const currentTime = new Date();
 
-    if (currentTime >= shippingDate) {
-        if (statusElem.classList.contains("bg-success")) {
-            return false;
+    if (currentTime < shippingDate) {
+        statusElem.textContent = "In elaborazione";
+        statusElem.classList = "badge bg-warning status-badge";
+        if (shippingDate - currentTime < 1000) {
+            sendNotificationRequest(order.dataset.orderId);
         }
+    } else {
         statusElem.textContent = "Consegnato";
-        statusElem.classList.replace("bg-warning", "bg-success");
-        sendNotificationRequest(order.dataset.orderId);
+        statusElem.classList = "badge bg-success status-badge";
         return true;
     }
     return false;
@@ -35,16 +38,16 @@ function sendNotificationRequest(orderId) {
 }
 
 const orders = document.querySelectorAll(".accordion-item");
-orders.forEach((order) => {
-    const statusElem = order.querySelector(".status-badge");
-    if (statusElem.classList.contains("bg-warning")) {
-        // Initial update
-        updateStatus(order);
-        const intervalId = setInterval(() => {
-            // Orders already updated to "success" are removed from the interval
-            if (updateStatus(order)) {
-                clearInterval(intervalId);
-            }
-        }, 1000);
-    }
-});
+    orders.forEach((order) => {
+        const statusElem = order.querySelector(".status-badge");
+        if (statusElem.classList.contains("bg-success")) {
+            // Initial update
+            updateStatus(order);
+            const intervalId = setInterval(() => {
+                // Orders already updated to "success" are removed from the interval
+                if (updateStatus(order)) {
+                    clearInterval(intervalId);
+                }
+            }, 1000);
+        }
+    });
