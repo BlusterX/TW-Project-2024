@@ -25,7 +25,7 @@
                             </span>
                         </div>
                         <!-- Default state -->
-                        Stato: <span class="badge bg-warning status-badge">In elaborazione</span>
+                        Stato: <span class="badge bg-success status-badge">Consegnato</span>
                         <h5 class="mt-3">Prodotti:</h5>
                         <?php if (!empty($products)): ?>
                             <?php foreach ($products as $product): ?>
