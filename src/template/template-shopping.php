@@ -1,4 +1,10 @@
 <!-- CONTENUTO PRINCIPALE -->
+<?php
+    if($templateParams["products"] == NULL){
+        echo "<h1 class='text-center pt-3'>Il carrello è vuoto</h1>";
+    }
+    else{
+?>       
         <main class="container py-4">
             <!-- Intestazione colonne -->
             <div class="row mb-2">
@@ -58,3 +64,4 @@
             </div>
             <?php } ?>
         </main>
+<?php } ?>
