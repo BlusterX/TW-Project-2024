@@ -75,6 +75,13 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getProductSoldOut() {
+        $query = "SELECT * FROM product WHERE stock = 0";
+        $result = $this->db->query($query);
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
     // Initialize a cart instance for the given user
     public function createCart($userId) {
         $query = "INSERT INTO cart (id_user) VALUES (?)";
@@ -327,6 +334,28 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAdminId() {
+        $query = "SELECT id_user FROM user WHERE is_admin = 1 LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return (int) $row['id_user'];
+        }
+        return 0;
+    }
+
+    public function getUsernameById($userId) {
+        $query = "SELECT username FROM user WHERE id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            return $row['username'];
+        }
+        return null;
+    }
 }
 
 ?>
