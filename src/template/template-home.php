@@ -32,7 +32,7 @@
                             <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?></p>
                             <p class="card-text fw-bolder fs-5">€<?php echo number_format($discountedPrice, 2); ?> (sconto <?php echo $product["discount"] ?>%)</p>
                             <?php } else { ?>
-                                <p class="card-text fs-5">€<?php echo $product["price"]; ?></p>
+                                <p class="card-text fs-5 mt-5">€<?php echo $product["price"]; ?></p>
                             <?php } ?>
                             <?php if ($product["stock"] > 0): ?>
                                 <p class="card-text fw-bolder">Rimasti: <?php echo $product["stock"]; ?></p>
