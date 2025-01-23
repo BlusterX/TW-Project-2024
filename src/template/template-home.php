@@ -1,10 +1,18 @@
 <!-- SEZIONE OFFERTA DEL GIORNO -->
 <header class="p-4 bg-dark">
+            <?php 
+                $maxDiscountProduct = array_reduce($templateParams["products_with_discount"], function($carry, $product) {
+                    return ($carry === null || $carry["discount"] < $product["discount"]) ? $product : $carry;
+                });
+                $discountedPrice = $maxDiscountProduct["price"] - ($maxDiscountProduct["price"] * $maxDiscountProduct["discount"] / 100);
+                $bestProduct = $maxDiscountProduct["img"];
+                $bestDiscount = $maxDiscountProduct["discount"];
+            ?>
             <div class="d-flex align-items-center justify-content-center flex-column flex-md-row text-center text-lg-start">
-                <img src="<?php echo UPLOAD_DIR . "prova.png" ; ?>" alt="Offerta del giorno" class="img-fluid img-offert-custom"/>
+                <img src="<?php echo UPLOAD_DIR . $bestProduct ; ?>" alt="Offerta del giorno" class="img-fluid img-offert-custom"/>
                 <div class="ms-lg-4 mt-3 mt-lg-0 offert-text-custom">
-                    <h2 class="fw-bold ms-2">Offerta del giorno! Solo a 259,99€</h2>
-                    <p class="fs-4">Affrettatevi!</p>
+                    <h2 class="fw-bold ms-2">Offerta del giorno! Solo a <?php echo number_format($discountedPrice, 2); ?>€</h2>
+                    <p class="fs-4">Affrettatevi, sconto del <?php echo $bestDiscount; ?>%!</p>
                 </div>
             </div>
         </header>
@@ -13,12 +21,19 @@
             <div class="row">
                 <?php foreach ($templateParams["products"] as $product): ?>
                 <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card card-custom text-white mb-4">
+                    <div class="card card-custom text-white mb-4 shadow-lg">
                         <div class="card-body text-center">
                             <img class="img-card-custom" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"/>
                             <h4 class="card-title mt-3 card-text-custom"><?php echo $product["name"]; ?></h4>
-                            <p class="card-text fw-bolder">€<?php echo $product["price"]; ?></p>
-                            
+                            <?php 
+                                if($product["discount"] > 0){
+                                    $discountedPrice = $product["price"] - ($product["price"] * $product["discount"] / 100); 
+                            ?>
+                            <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?></p>
+                            <p class="card-text fw-bolder fs-5">€<?php echo number_format($discountedPrice, 2); ?> (sconto <?php echo $product["discount"] ?>%)</p>
+                            <?php } else { ?>
+                                <p class="card-text fs-5">€<?php echo $product["price"]; ?></p>
+                            <?php } ?>
                             <?php if ($product["stock"] > 0): ?>
                                 <p class="card-text fw-bolder">Rimasti: <?php echo $product["stock"]; ?></p>
                                 <a href="<?php echo isUserLoggedIn() ? 'add-to-cart.php?product_id=' . $product["id_product"]
