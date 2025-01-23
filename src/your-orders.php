@@ -17,11 +17,13 @@ if(isset($_GET["order_id"])) {
         $notificationMessage .= "<br/>" . $product["name"] . " x" . $product["quantity"];
     }
     $dbh->createNotification(getUserId(), $notificationTitle, $notificationMessage);
+
     //Notifica per l'admin della conferma dell'acquisto
     $username = $dbh->getUsernameById(getUserId());
     $notificationTitle = "L'ordine #" . $idOrder . " è stato effettuato da " . $username;
     $admin_id = $dbh->getAdminId();
     $dbh->createNotification($admin_id, $notificationTitle, $notificationMessage);
+
     //Notifica per l'admin se un prodotto è esaurito
     $allProductSoldOut = $dbh->getProductSoldOut();
     foreach($products as $product) {
@@ -33,6 +35,9 @@ if(isset($_GET["order_id"])) {
             }
         }
     }
+
+    // Redirect to the same page clearing $_GET to avoid resubmission
+    header("Location: " . $_SERVER['PHP_SELF']);
 }
 
 $templateParams["titolo"] = "I tuoi ordini";
