@@ -9,6 +9,8 @@ $templateParams["titolo"] = "Shopping";
 $templateParams["nome"] = "template-shopping.php";
 $templateParams["cart_id"] = $dbh->getCartId(getUserId());
 $templateParams["products"] = $dbh->getCartProducts(getUserId());
-$templateParams["js"] = array("js/logout.js");
+if(isUserLoggedIn() && !isAdmin()){
+    $templateParams["js"][] = "js/logout.js";
+}
 require("template/base.php");
 ?>

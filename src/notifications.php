@@ -9,6 +9,9 @@ $templateParams["titolo"] = "Notifications";
 $templateParams["nome"] = "template-notifications.php";
 $id_user = getUserId();
 $templateParams["notifiche"] = $dbh->getUserNotifications($id_user);
-$templateParams["js"] = array("js/notification-status.js", "js/logout.js");
+$templateParams["js"] = array("js/notification-status.js");
+if(isUserLoggedIn() && !isAdmin()){
+    $templateParams["js"][] = "js/logout.js";
+}
 require("template/base.php");
 ?>
