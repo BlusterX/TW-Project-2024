@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `order` (
     id_user INT NOT NULL,
     `date` DATETIME NOT NULL,
     date_shipping DATETIME DEFAULT NULL,
+    is_delivered BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (`id_order`),
     FOREIGN KEY (`id_user`) REFERENCES user(`id_user`)
 ) ENGINE = InnoDB;

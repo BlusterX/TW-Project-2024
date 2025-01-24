@@ -9,10 +9,10 @@ class DatabaseHelper {
         }      
     }
 
-    public function insertProduct($name, $price, $discount, $description, $img, $stock) {
-        $query = "INSERT INTO product (name, price, discount, description, img, stock) VALUES (?, ?, ?, ?, ?)";
+    public function insertProduct($name, $price, $description, $img, $stock) {
+        $query = "INSERT INTO product (name, price, description, img, stock) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("siissi", $name, $price, $discount, $description, $img, $stock);
+        $stmt->bind_param("sissi", $name, $price, $description, $img, $stock);
         $stmt->execute();
 
         return $stmt->insert_id;
@@ -208,7 +208,7 @@ class DatabaseHelper {
     }
 
     public function generateShippingDate($orderId) {
-        $shippingDate = date('Y-m-d H:i:s', time() + rand(10, 30));
+        $shippingDate = date('Y-m-d H:i:s', time() + rand(10, 20));
         $query = "UPDATE `order` SET date_shipping = ? WHERE id_order = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('si', $shippingDate, $orderId);
@@ -262,6 +262,23 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUndeliveredOrders($userId) {
+        $query = "SELECT * FROM `order` WHERE id_user = ? AND is_delivered = 0";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function setAsDelivered($orderId) {
+        $query = "UPDATE `order` SET is_delivered = 1 WHERE id_order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        return $stmt->execute();
+    }
+
     public function insertUser($username, $email, $password, $name, $surname){
         $query = "INSERT INTO user (username, email, password, name, surname) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
@@ -309,14 +326,34 @@ class DatabaseHelper {
     }
 
     public function markNotificationAsRead($notificationId) {
-        $query = "UPDATE notification SET `read` = 1 WHERE id_notification = ?";
+        $query = "UPDATE notification SET is_read = 1 WHERE id_notification = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $notificationId);
         return $stmt->execute();
     }
 
+    public function getNotificationById($notificationId) {
+        $query = "SELECT * FROM notification WHERE id_notification = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $notificationId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc();
+    } 
+
     public function getUserNotifications($userId) {
-        $query = "SELECT * FROM notification WHERE id_user = ?";
+        $query = "SELECT * FROM notification WHERE id_user = ? ORDER BY id_notification DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUserUnreadNotifications($userId) {
+        $query = "SELECT * FROM notification WHERE id_user = ? AND is_read = 0";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $userId);
         $stmt->execute();

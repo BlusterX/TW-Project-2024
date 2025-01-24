@@ -1,53 +1,36 @@
+function checkOrders() {
+    const url = "update-orders.php";
 
-function updateStatus(order) {
-    const shippingDateElem = order.querySelector(".shipping-date");
-    const statusElem = order.querySelector(".status-badge");
-
-    const shippingDate = new Date(shippingDateElem.dataset.date);
-    const currentTime = new Date();
-
-    if (currentTime < shippingDate) {
-        statusElem.textContent = "In elaborazione";
-        statusElem.classList = "badge bg-warning status-badge";
-        if (shippingDate - currentTime < 1000) {
-            sendNotificationRequest(order.dataset.orderId);
-        }
-    } else {
-        statusElem.textContent = "Consegnato";
-        statusElem.classList = "badge bg-success status-badge";
-        return true;
-    }
-    return false;
-}
-
-function sendNotificationRequest(orderId) {
-    const url = "shipping-notification.php";
-    const formData = new FormData();
-    formData.append("order_id", orderId);
-    fetch(url, {
-        method: "POST",
-        body: formData,
-    })
-        .then((response) => response.json())
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Errore nel controllo dello stato degli ordini.");
+            }
+            return response.json();
+        })
         .then((data) => {
-            console.log(data.success ? "Notifica creata: " + data.message : "Errore notifica: " + data.message);
+            if (data.success) {
+                // TODO: controllo array vuoto?
+                // TODO: controllo se mi trovo in pagina ordini
+                const orders = document.querySelectorAll(".accordion-item");
+                orders.forEach((order) => {
+                    const statusElem = order.querySelector(".status-badge");
+                    // Convert dataset orderId string into int for the comparison
+                    const orderId = parseInt(order.dataset.orderId, 10);
+                    const updatedOrders = data.updatedOrders;
+                    // Update status of shipped orders
+                    if (updatedOrders.includes(orderId)) {
+                        statusElem.textContent = "Consegnato";
+                        statusElem.classList = "badge bg-success status-badge";
+                    }
+                });
+            } else {
+                console.error("Errore nella risposta:", data.message);
+            }
         })
         .catch((error) => {
-            console.error("Errore durante la notifica:", error);
+            console.error("Errore durante il controllo degli ordini:", error);
         });
 }
 
-const orders = document.querySelectorAll(".accordion-item");
-    orders.forEach((order) => {
-        const statusElem = order.querySelector(".status-badge");
-        if (statusElem.classList.contains("bg-success")) {
-            // Initial update
-            updateStatus(order);
-            const intervalId = setInterval(() => {
-                // Orders already updated to "success" are removed from the interval
-                if (updateStatus(order)) {
-                    clearInterval(intervalId);
-                }
-            }, 1000);
-        }
-    });
+setInterval(checkOrders, 1000);
