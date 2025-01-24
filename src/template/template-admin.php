@@ -1,11 +1,11 @@
 <!-- CONTENUTO PRINCIPALE -->
   <main class="container my-5">
-    <h2 class="fw-bold mb-4">Gestione Prodotti</h2>
+    <h2 class="fw-bold mb-4 text-center">Gestione Prodotti</h2>
 
     <div class="d-flex justify-content-end">
         <a <?php isActive("admin-addproduct.php")?> href="admin-addproduct.php">
           <button type="button" class="btn btn-success mb-3">
-            <i class="bi bi-plus-lg">Aggiungi Prodotto</i>
+            Aggiungi Prodotto
           </button>
         </a>
     </div>
@@ -15,6 +15,7 @@
           <tr>
             <th>Nome</th>
             <th>Prezzo</th>
+            <th>Sconto</th>
             <th>Stock</th>
             <th class="d-none d-md-table-cell">Immagine</th>
             <th class="d-none d-md-table-cell">Descrizione</th>
@@ -23,23 +24,22 @@
         </thead>
       <tbody>
       <?php foreach ($templateParams["products"] as $product): ?>
-      <tr>
+      <tr class="text-center">
         <td><?php echo $product["name"]; ?></td>
         <td>€<?php echo $product["price"]; ?></td>
+        <td><?php echo $product["discount"]; ?>%</td>
         <td><?php echo $product["stock"]; ?></td>
-        <td class="d-none d-md-table-cell"><img class="img-fluid" style="max-width: 70px;" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"></td>
+        <td class="d-none d-md-table-cell"><img class="img-fluid icon" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"></td>
         <td class="d-none d-md-table-cell"><?php echo $product["description"]; ?></td>
         <td>
             <a <?php isActive("admin-modifica.php")?> href="admin-modifica.php?id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
               <button class="btn btn-warning btn-sm m-1">
-              <i class="bi bi-pencil-square">Modifica</i>
+                Modifica
               </button>
             </a>
-            <a href="admin-manage-product.php?action=del&id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
-              <button class="btn btn-danger btn-sm m-1">
-                <i class="bi bi-trash">Elimina</i>
+                <button class="btn btn-danger btn-sm m-1 confirmDelete" data-id="<?php echo $product["id_product"]; ?>">
+                Elimina
               </button>
-            </a>
         </td>
       </tr>
       <?php endforeach; ?>
