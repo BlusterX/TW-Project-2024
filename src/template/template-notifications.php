@@ -14,11 +14,14 @@
     <div class="accordion" id="notificationsAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="<?php echo $headerId; ?>">
-                <button class="accordion-button text-success fw-bold collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $accordionId; ?>" aria-expanded="false" aria-controls="<?php echo $accordionId; ?>">
+                <button class="accordion-button <?php echo $notifica["is_read"] ? "text-success" : "text-warning" ?> fw-bold collapsed" type="button"
+                    data-id="<?php echo $codNotifica; ?>" data-bs-toggle="collapse" data-bs-target="#<?php echo $accordionId; ?>"
+                    aria-expanded="false" aria-controls="<?php echo $accordionId; ?>">
                     <?php echo $notifica["title"]; ?>
                 </button>
             </h2>
-            <div id="<?php echo $accordionId; ?>" class="accordion-collapse collapse" aria-labelledby="<?php echo $headerId; ?>" data-bs-parent="#notificationsAccordion">
+            <div id="<?php echo $accordionId; ?>" class="accordion-collapse collapse"
+                aria-labelledby="<?php echo $headerId; ?>" data-bs-parent="#notificationsAccordion">
                 <div class="accordion-body">
                     <?php echo $notifica["message"]; ?>
                 </div>
