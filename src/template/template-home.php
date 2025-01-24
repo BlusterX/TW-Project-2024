@@ -20,7 +20,7 @@
         <main class="container my-4">
             <div class="row">
                 <?php foreach ($templateParams["products"] as $product): ?>
-                <div class="col-12 col-md-6 col-lg-3">
+                <div class="col-12 col-md-6 col-lg-4">
                     <div class="card card-custom text-white mb-4 shadow-lg">
                         <div class="card-body text-center">
                             <img class="img-card-custom" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"/>
@@ -32,7 +32,7 @@
                             <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?>
                             <?php if (!empty($product['description'])): ?>
                                 <i class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
-                                    <img class="img-fluid" style="width: 20px; vertical-align: middle;" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
+                                    <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
                                 </i>
                             <?php endif; ?>
                             </p>
@@ -43,7 +43,7 @@
                                     €<?php echo $product["price"]; ?>
                                     <?php if (!empty($product['description'])): ?>
                                         <i class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
-                                            <img class="img-fluid" style="width: 20px; vertical-align: middle;" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
+                                            <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
                                         </i>
                                     <?php endif; ?>
                                 </p>

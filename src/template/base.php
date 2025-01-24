@@ -27,7 +27,7 @@
                 <a <?php isActive('home.php') ?> href="home.php">
                     <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="40" />
                 </a>
-                <h1 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
+                <h2 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-4">
                 <a <?php isActive('notifications.php') ?> href="notifications.php">
@@ -35,16 +35,16 @@
                     translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"><span 
                     class="visually-hidden">unread messages</span>
                     </span>
-                    <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications" width="40" />
+                    <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
                 </a>
                 <?php if (isAdmin()): ?>
                     <a <?php isActive('admin.php'); ?> href="admin.php">
-                        <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" width="40" />
+                        <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login"/>
                     </a>
                 <?php elseif (isUserLoggedIn()): ?>
                     <div class="dropdown">
                         <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" width="40" />
+                            <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" />
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu" style="border: 5px solid #ccc; border-radius: 10px; padding: 10px;">
                             <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
@@ -62,7 +62,7 @@
                     </a>
                 <?php endif; ?>
                 <a <?php isActive('shopping.php'); ?> href="shopping.php">
-                    <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart" width="40" />
+                    <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
                 </a>
             </div>
         </nav>
@@ -78,7 +78,7 @@
             <p class="mb-0">Telefono: +39 123 456 7890</p>
         </footer>
     </div>
-    <script src="../js/order-status.js"></script>
+    <script href="js/order-status.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <?php
     if(isset($templateParams["js"])):
