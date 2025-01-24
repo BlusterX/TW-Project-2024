@@ -395,7 +395,7 @@ class DatabaseHelper {
     }
 
     public function getProductWithDiscount() {
-        $query = "SELECT * FROM product WHERE discount > 0";
+        $query = "SELECT * FROM product WHERE discount > 0 AND stock > 0";
         $result = $this->db->query($query);
 
         return $result->fetch_all(MYSQLI_ASSOC);
