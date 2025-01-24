@@ -50,10 +50,10 @@
                                 
                             <?php } ?>
                             <?php if ($product["stock"] > 0): ?>
-                                <p class="card-text fw-bolder">Rimasti: <?php echo $product["stock"]; ?></p>
-                                <a href="<?php echo isUserLoggedIn() ? 'add-to-cart.php?product_id=' . $product["id_product"]
-                                    : 'login.php'; ?>" 
-                                    class="btn fw-bold btn-custom">Aggiungi</a>
+                                <p class="card-text fw-bolder stock-count">Rimasti: <?php echo $product["stock"]; ?></p>
+                                <a href="<?php echo isUserLoggedIn() ? '#' : 'login.php'; ?>"
+                                    data-product-id="<?php echo $product["id_product"]; ?>"
+                                    class="btn fw-bold btn-custom add-to-cart-btn">Aggiungi</a>
                             <?php else: ?>
                                 <p class="text-danger fw-bold mt-3">Esaurito</p>
                                 <button class="btn btn-secondary fw-bold" disabled>Non Disponibile</button>

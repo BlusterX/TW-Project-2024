@@ -1,26 +1,45 @@
 <?php
 require_once("bootstrap.php");
+header('Content-Type: application/json');
 
-if(!isUserLoggedIn() || !isset($_GET["product_id"])) {
-    header("Location: login.php");
+if (!isUserLoggedIn()) {
+    echo json_encode(["success" => false, "message" => "Utente non loggato."]);
+    exit();
+}
+if (!isset($_POST["product_id"])) {
+    echo json_encode(["success" => false, "message" => "Informazioni sull'ID del prodotto mancanti."]);
+    exit();
 }
 
-$productId = $_GET["product_id"];
-$productStock = $dbh->getProductStock($productId);
+$productId = $_POST["product_id"];
 $userId = getUserId();
 
-if($productStock < 1) {
-    exit("Prodotto non disponibile");
-}
+try {
+    $productStock = $dbh->getProductStock($productId);
 
-if($dbh->isProductInCart($userId, $productId)) {
-    $quantity = $dbh->getCartQuantity($userId, $productId);
-    $dbh->updateCartQuantity($userId, $productId, $quantity + 1);
-} else {
-    $dbh->addProductToCart($userId, $productId, 1);
-}
-$dbh->updateProductStock($productId, $productStock - 1);
+    if ($productStock < 1) {
+        echo json_encode(["success" => false, "message" => "Prodotto non disponibile."]);
+        exit();
+    }
 
-header("Location: home.php");
+    if ($dbh->isProductInCart($userId, $productId)) {
+        $quantity = $dbh->getCartQuantity($userId, $productId);
+        $dbh->updateCartQuantity($userId, $productId, $quantity + 1);
+    } else {
+        $dbh->addProductToCart($userId, $productId, 1);
+    }
+
+    $newStock = $productStock - 1;
+    $dbh->updateProductStock($productId, $newStock);
+
+    // Prepara la risposta di successo
+    echo json_encode(["success" => true, "remainingStock" => $newStock, "message" => "Prodotto aggiunto al carrello."]);
+} catch (Exception $e) {
+    echo json_encode([
+        "success" => false,
+        "remainingStock" => $newStock,
+        "error" => "Errore durante l\'aggiunta al carrello: " . $e->getMessage()
+    ]);
+}
 
 ?>
