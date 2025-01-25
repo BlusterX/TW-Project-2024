@@ -38,7 +38,7 @@
                         <span class="fs-5 col-3 text-center">€<?php echo $totalPrice; ?></span>
                          
                         <!-- Pulsante Rimuovi -->
-                        <form method="POST" action="remove-from-cart.php" class="d-inline col-3 text-center">
+                        <form method="POST" action="api/remove-from-cart.php" class="d-inline col-3 text-center">
                             <input type="hidden" name="product_id" value="<?php echo $product["id_product"]; ?>"/>
                             <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>Rimuovi</button>
                         </form>
@@ -60,7 +60,7 @@
             <?php if($tot != 0){ ?>
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
-                    <a href="generate-order.php?cart_id=<?php echo $templateParams['cart_id']; ?>">
+                    <a href="api/generate-order.php?cart_id=<?php echo $templateParams['cart_id']; ?>">
                         <button type="submit" class="btn btn-success btn-lg">Completa acquisto</button>
                     </a>
                 </div>

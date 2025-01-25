@@ -6,7 +6,7 @@ function addClickListener(button) {
         }
 
         const notificationId = button.getAttribute("data-id");
-        const url = "update-notification.php";
+        const url = "api/update-notification.php";
         const formData = new FormData();
         formData.append("notification_id", notificationId);
         fetch(url, {
@@ -30,7 +30,7 @@ function addClickListener(button) {
 
 function updateNotificationsList() {
     const notificationsContainer = document.getElementById("notificationsAccordion");
-    const url = "check-notifications.php";
+    const url = "api/check-notifications.php";
     fetch(url)
         .then((response) => {
             if (!response.ok) {

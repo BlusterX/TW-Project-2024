@@ -1,8 +1,8 @@
 <?php
-require_once("bootstrap.php");
+require_once("../bootstrap.php");
 
 if(!isUserLoggedIn()) {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 if(!isset($_GET["order_id"])) {
     exit("Errore: informazioni relative all'ordine mancanti");
@@ -22,5 +22,5 @@ foreach($products as $product) {
 $dbh->deleteOrderedProducts($orderId); // Remove all instances of ordered products
 $dbh->deleteOrder($orderId);
 
-header("Location: home.php");
+header("Location: ../home.php");
 ?>

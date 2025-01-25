@@ -27,7 +27,7 @@
                 <a href="your-orders.php?order_id=<?php echo $templateParams["order_id"]; ?>">
                     <button class="btn btn-success btn-lg w-100 mb-3">Paga ora</button>
                 </a>
-                <a href="cancel-order.php?order_id=<?php echo $templateParams["order_id"]; ?>">
+                <a href="api/cancel-order.php?order_id=<?php echo $templateParams["order_id"]; ?>">
                 <button class="btn btn-danger btn-lg w-100">Annulla ordine</button>
                 </a>
             </div>

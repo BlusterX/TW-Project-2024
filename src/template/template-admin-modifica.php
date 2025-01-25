@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <h1 class="m-4">Modifica Prodotto</h1>
     <?php $product = $templateParams["product"]; ?>
-    <form class="m-4" action="admin-manage-product.php?action=mod&id=<?php echo $product["id_product"]; ?>" method="POST" enctype="multipart/form-data">
+    <form class="m-4" action="api/admin-manage-product.php?action=mod&id=<?php echo $product["id_product"]; ?>" method="POST" enctype="multipart/form-data">
         <div class="form-group mb-3">
             <label for="name">Nome del prodotto:</label>
             <input type="text" class="form-control" id="name" name="name" value="<?php echo $product["name"]; ?>" required/>

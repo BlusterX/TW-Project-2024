@@ -1,5 +1,5 @@
 function checkOrders() {
-    const url = "update-orders.php";
+    const url = "api/update-orders.php";
 
     fetch(url)
         .then((response) => {

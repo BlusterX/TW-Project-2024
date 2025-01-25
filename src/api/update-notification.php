@@ -1,10 +1,10 @@
 <?php
-require_once("bootstrap.php");
+require_once("../bootstrap.php");
 
 header("Content-Type: application/json");
 
 if (!isUserLoggedIn()) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 if (!isset($_POST["notification_id"])) {

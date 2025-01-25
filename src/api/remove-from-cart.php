@@ -1,8 +1,8 @@
 <?php
-require_once("bootstrap.php");
+require_once("../bootstrap.php");
 
 if(!isUserLoggedIn() || !isset($_POST["product_id"])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
 
 $productId = $_POST["product_id"];
@@ -17,6 +17,6 @@ if (!$dbh->isProductInCart($userId, $productId)) {
     $dbh->updateProductStock($productId, $productStock + $quantity);
 }
 
-header("Location: shopping.php");
+header("Location: ../shopping.php");
 
 ?>

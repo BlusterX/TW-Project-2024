@@ -22,9 +22,10 @@ addToCartButtons.forEach((button) => {
         e.preventDefault();
 
         const productId = this.getAttribute("data-product-id");
+        const url = "api/add-to-cart.php"
         const formData = new FormData();
         formData.append("product_id", productId);
-        fetch("add-to-cart.php", {
+        fetch(url, {
             method: "POST",
             body: formData,
         })

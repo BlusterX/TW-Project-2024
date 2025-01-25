@@ -11,7 +11,7 @@ document.querySelectorAll('.confirmDelete').forEach(button => {
                     </div>
                     <div class="modal-footer justify-content-center">
                         <button type="button" class="btn btn-secondary w-25" data-bs-dismiss="modal">No</button>
-                        <a href="admin-manage-product.php?action=del&id=${productId}" class="btn btn-danger w-25">Sì</a>
+                        <a href="api/admin-manage-product.php?action=del&id=${productId}" class="btn btn-danger w-25">Sì</a>
                     </div>
                 </div>
             </div>

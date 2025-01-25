@@ -1,10 +1,10 @@
 <?php
-require_once("bootstrap.php");
+require_once("../bootstrap.php");
 
 if (!isUserLoggedIn() || !isset($_GET["action"])) {
-    header("location: login.php");
+    header("location: ../login.php");
 } else if (!isAdmin()) {
-    header("location: home.php");
+    header("location: ../home.php");
 }
 
 switch($_GET["action"]) {
@@ -19,7 +19,7 @@ switch($_GET["action"]) {
     case "mod":
         $dbh->updateProduct( $_POST["name"], $_POST["price"], $_POST["discount"],
         $_POST["description"], $_POST["stock"], $_GET["id"]);
-        header("location: admin.php");
+        header("location: ../admin.php");
         break;
     case "del":
         $productId = $_GET["id"];
@@ -28,6 +28,6 @@ switch($_GET["action"]) {
         break;
 }
 
-header("location: admin.php");
+header("location: ../admin.php");
 
 ?>
