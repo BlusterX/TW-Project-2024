@@ -30,7 +30,7 @@ if(isset($_GET["order_id"])) {
         foreach($allProductSoldOut as $productSoldOut) {
             if($product["id_product"] == $productSoldOut["id_product"]) {
                 $notificationTitle = "Il prodotto " . $product["name"] . " è esaurito";
-                $notificationMessage = "Il prodotto " . $product["name"] . " è esaurito bisogna fare rifornimento al più presto";
+                $notificationMessage = "Gli stock di " . $product["name"] . " sono terminati.";
                 $dbh->createNotification($admin_id, $notificationTitle, $notificationMessage);
             }
         }
