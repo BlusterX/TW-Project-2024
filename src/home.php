@@ -7,8 +7,12 @@ $templateParams["nome"] = "template-home.php";
 $templateParams["products"] = $dbh->getAllProducts();
 $templateParams["js"] = array("js/tooltip.js");
 
-if(isUserLoggedIn() && !isAdmin()){
-    array_push($templateParams["js"], "js/logout.js", "js/list-update.js");
+if(isUserLoggedIn()){
+    $templateParams["js"][] = "js/list-update.js";
+    if(!isAdmin()) {
+        $templateParams["js"][] = "js/logout.js";
+    }
 }
+
 require("template/base.php");
 ?>
