@@ -304,16 +304,6 @@ class DatabaseHelper {
         return $stmt->insert_id;
     }
 
-    public function checkLogin($username, $password){
-        $query = "SELECT id_user, username, name FROM user WHERE username = ? AND password = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss', $username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getUserByEmail($email){
         $query = "SELECT * FROM user WHERE email = ?";
         $stmt = $this->db->prepare($query);
@@ -375,15 +365,6 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function getIdOrder($userId){
-        $query = "SELECT id_order FROM `order` WHERE id_user = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $userId);
-        $stmt->execute();
-        $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
