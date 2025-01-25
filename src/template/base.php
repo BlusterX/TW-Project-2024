@@ -59,7 +59,7 @@
                         </ul>
                     </div>
                 <?php else: ?>
-                    <a <?php isActive('login.php'); ?> href="login.php">
+                    <a <?php isActive("login.php"); ?> href="login.php">
                         <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" width="40" />
                     </a>
                 <?php endif; ?>

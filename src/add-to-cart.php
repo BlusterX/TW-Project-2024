@@ -32,7 +32,6 @@ try {
     $newStock = $productStock - 1;
     $dbh->updateProductStock($productId, $newStock);
 
-    // Prepara la risposta di successo
     echo json_encode(["success" => true, "remainingStock" => $newStock, "message" => "Prodotto aggiunto al carrello."]);
 } catch (Exception $e) {
     echo json_encode([

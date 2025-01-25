@@ -3,7 +3,7 @@
     <h2 class="fw-bold mb-4 text-center">Gestione Prodotti</h2>
 
     <div class="d-flex justify-content-end">
-        <a <?php isActive("admin-addproduct.php")?> href="admin-addproduct.php">
+        <a href="admin-addproduct.php">
           <button type="button" class="btn btn-success mb-3">
             Aggiungi Prodotto
           </button>
@@ -32,7 +32,7 @@
         <td class="d-none d-md-table-cell"><img class="img-fluid icon" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"></td>
         <td class="d-none d-md-table-cell"><?php echo $product["description"]; ?></td>
         <td>
-            <a <?php isActive("admin-modifica.php")?> href="admin-modifica.php?id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
+            <a href="admin-modify.php?id=<?php echo $product["id_product"]; ?>" class="d-inline-block">
               <button class="btn btn-warning btn-sm m-1">
                 Modifica
               </button>
