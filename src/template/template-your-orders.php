@@ -14,7 +14,7 @@
                         Ordine #<?php echo $order["id_order"]; ?>
                     </button>
                 </h2>
-                <div class="accordion-collapse collapse" style="display: none;">
+                <div class="accordion-collapse collapse accordion-custom">
                     <div class="accordion-body">
                         <div class="mb-2">Data effettuazione: <?php echo $orderDate ?></div>
                         <div class="mb-2">Data spedizione:

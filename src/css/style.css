@@ -33,11 +33,6 @@ body {
     min-width: 250px;
 }
 
-
-.btn-custom {
-    
-}
-
 .offert-text-custom {
     color: #ffffff;
 }
@@ -64,6 +59,17 @@ body {
 
 .add-to-cart-btn:active {
     transform: scale(1.20);
+}
+
+.accordion-custom {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.accordion-custom.show {
+    max-height: 1000px;
+    padding: 10px 0;
 }
 
 @media (min-width: 992px) {
