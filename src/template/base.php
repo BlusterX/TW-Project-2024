@@ -9,7 +9,7 @@
                             echo " - " . $templateParams["title"];
                         }
                         ?></title>
-
+    <link rel="icon" href="<?php echo UPLOAD_DIR . "logo.png"; ?>" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-custom fixed-top">
             <div class="navbar-brand d-flex align-items-center ms-3">
                 <a <?php isActive('home.php') ?> href="home.php">
-                    <img class="icon" src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" />
+                    <img class="icon" src="<?php echo UPLOAD_DIR . "logo.png"; ?>" alt="Logo" />
                 </a>
                 <h2 class="d-inline-block ms-2 mb-0 text-white">PG-COMMERCE</h1>
             </div>

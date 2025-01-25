@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS product (
     price DECIMAL(10, 2) NOT NULL,
     discount INT NOT NULL DEFAULT 0,
     stock INT NOT NULL DEFAULT 0,
-    is_delete BOOLEAN NOT NULL DEFAULT FALSE,
+    is_deleted BOOLEAN NOT NULL DEFAULT FALSE,
     `description` TEXT,
     img VARCHAR(100) NOT NULL,
     PRIMARY KEY (`id_product`)
