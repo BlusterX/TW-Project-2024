@@ -69,6 +69,7 @@ class DatabaseHelper {
     // Return all the available products
     public function getAllProducts() {
         $query = "SELECT * FROM product
+            WHERE is_delete = 0
             ORDER BY name";
         $result = $this->db->query($query);
 
@@ -145,7 +146,7 @@ class DatabaseHelper {
             JOIN product p ON cp.id_product = p.id_product
             JOIN cart c ON cp.id_cart = c.id_cart
             JOIN user u ON c.id_user = u.id_user
-            WHERE u.id_user = ?";
+            WHERE u.id_user = ? AND p.is_delete = 0";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $userId);
         $stmt->execute();
@@ -159,7 +160,8 @@ class DatabaseHelper {
         $query = "SELECT SUM(quantity) AS totalItems
             FROM cart_product cp
             JOIN cart c ON cp.id_cart = c.id_cart
-            WHERE c.id_user = ?";
+            JOIN product p ON cp.id_product = p.id_product
+            WHERE c.id_user = ? AND p.is_delete = 0";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $userId);
         $stmt->execute();
@@ -392,10 +394,17 @@ class DatabaseHelper {
     }
 
     public function getProductWithDiscount() {
-        $query = "SELECT * FROM product WHERE discount > 0 AND stock > 0";
+        $query = "SELECT * FROM product WHERE discount > 0 AND stock > 0 AND is_delete = 0";    
         $result = $this->db->query($query);
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function updateDeleteProduct($productId) {
+        $query = "UPDATE product SET is_delete = 1 WHERE id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $productId);
+        return $stmt->execute();
     }
 }
 

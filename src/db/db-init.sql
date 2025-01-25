@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS product (
     price DECIMAL(10, 2) NOT NULL,
     discount INT NOT NULL DEFAULT 0,
     stock INT NOT NULL DEFAULT 0,
+    is_delete BOOLEAN NOT NULL DEFAULT FALSE,
     `description` TEXT,
     img VARCHAR(100) NOT NULL,
     PRIMARY KEY (`id_product`)
@@ -52,7 +53,7 @@ CREATE TABLE IF NOT EXISTS order_product (
     id_product INT NOT NULL,
     quantity INT NOT NULL DEFAULT 1,
     price DECIMAL(10, 2) NOT NULL, -- Price at the moment of the order
-    discount INT NOT NULL DEFAULT 0,
+    discount INT NOT NULL DEFAULT 0, -- Discount at the moment of the order
     PRIMARY KEY (`id_order`, `id_product`),
     FOREIGN KEY (`id_order`) REFERENCES `order`(`id_order`),
     FOREIGN KEY (`id_product`) REFERENCES product(`id_product`)
