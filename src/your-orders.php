@@ -43,6 +43,6 @@ if(isset($_GET["order_id"])) {
 $templateParams["titolo"] = "I tuoi ordini";
 $templateParams["nome"] = "template-your-orders.php";
 $templateParams["orders"] = $dbh->getAllOrdersNewestFirst(getUserId());
-$templateParams["js"] = array("js/order-status.js", "js/logout.js");
+$templateParams["js"] = array("js/order-status.js", "js/logout.js", "js/show-orders.js");
 require("template/base.php");
 ?>

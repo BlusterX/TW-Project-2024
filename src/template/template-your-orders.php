@@ -7,16 +7,14 @@
             $orderDate = formatDate($order["date"]);
             $shippingDate = formatDate($order["date_shipping"]);
             $products = $dbh->getOrderedProducts($order["id_order"]); ?>
+
             <div class="accordion-item" data-order-id="<?php echo $order['id_order']; ?>">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapse<?php echo $order['id_order']; ?>"
-                        aria-expanded="false" aria-controls="collapse<?php echo $order["id_order"]; ?>">
+                    <button class="accordion-button collapsed" type="button" aria-expanded="false">
                         Ordine #<?php echo $order["id_order"]; ?>
                     </button>
                 </h2>
-                <div id="collapse<?php echo $order['id_order']; ?>" class="accordion-collapse collapse"
-                    aria-labelledby="heading<?php echo $order["id_order"]; ?>">
+                <div class="accordion-collapse collapse" style="display: none;">
                     <div class="accordion-body">
                         <div class="mb-2">Data effettuazione: <?php echo $orderDate ?></div>
                         <div class="mb-2">Data spedizione:
