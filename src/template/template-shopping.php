@@ -21,13 +21,13 @@
             ?>
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2">
-                    <div class="d-flex align-items-center justify-content-between p-4" style="background-color: #999; border-radius: 10px;">
+                    <div class="d-flex align-items-center justify-content-between p-4" style="background-color: #D3D3D3; border-radius: 10px;">
                         <!-- Immagine + nome -->
                         <div class="d-flex flex-column align-items-center col-3">
                             <img class="img-card-custom icon" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"/>
                             <span class="mt-2 fw-bold fs-6"><?php echo $product["name"]; ?></span>
                         </div>
-                        <div class="pe-4 col-3 text-center">
+                        <div class="col-3 text-center">
                             <!-- Quantità -->
                             <span class="fw-bold bg-white px-2 rounded"><?php echo $product["quantity"]; ?></span>
                         </div>

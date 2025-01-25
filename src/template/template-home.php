@@ -1,25 +1,29 @@
 <!-- SEZIONE OFFERTA DEL GIORNO -->
-<header class="p-4 bg-dark">
-            <?php 
-                $maxDiscountProduct = array_reduce($templateParams["products_with_discount"], function($carry, $product) {
-                    return ($carry === null || $carry["discount"] < $product["discount"]) ? $product : $carry;
-                });
-                $discountedPrice = $maxDiscountProduct["price"] - ($maxDiscountProduct["price"] * $maxDiscountProduct["discount"] / 100);
-                $bestProduct = $maxDiscountProduct["img"];
-                $bestDiscount = $maxDiscountProduct["discount"];
-            ?>
-            <div class="d-flex align-items-center justify-content-center flex-column flex-md-row text-center text-lg-start">
-                <img src="<?php echo UPLOAD_DIR . $bestProduct ; ?>" alt="Offerta del giorno" class="img-fluid img-offert-custom"/>
-                <div class="ms-lg-4 mt-3 mt-lg-0 offert-text-custom">
-                    <h2 class="fw-bold ms-2">Offerta del giorno! Solo a <?php echo number_format($discountedPrice, 2); ?>€</h2>
-                    <p class="fs-4">Affrettatevi, sconto del <?php echo $bestDiscount; ?>%!</p>
-                </div>
+<?php 
+if (!empty($templateParams["products_with_discount"])) {
+    $maxDiscountProduct = array_reduce($templateParams["products_with_discount"], function($carry, $product) {
+        return ($carry === null || $carry["discount"] < $product["discount"]) ? $product : $carry;
+    });
+    $discountedPrice = $maxDiscountProduct["price"] - ($maxDiscountProduct["price"] * $maxDiscountProduct["discount"] / 100);
+    $bestProduct = $maxDiscountProduct["img"];
+    $bestDiscount = $maxDiscountProduct["discount"];
+?>
+    <header class="p-4 bg-dark">
+        <div class="d-flex align-items-center justify-content-center flex-column flex-md-row text-center text-lg-start">
+            <img src="<?php echo UPLOAD_DIR . $bestProduct; ?>" alt="Offerta del giorno" class="img-fluid img-offert-custom"/>
+            <div class="ms-lg-4 mt-3 mt-lg-0 offert-text-custom">
+                <h2 class="fw-bold ms-2">Offerta del giorno! Solo a <?php echo number_format($discountedPrice, 2); ?>€</h2>
+                <p class="fs-4">Affrettatevi, sconto del <?php echo $bestDiscount; ?>%!</p>
             </div>
-        </header>
-        <!-- PRODOTTI -->
-        <main class="container my-4">
-            <div class="row">
-                <?php foreach ($templateParams["products"] as $product): ?>
+        </div>
+    </header>
+<?php 
+} 
+?>
+<!-- PRODOTTI -->
+    <main class="container my-4">
+        <div class="row">
+            <?php foreach ($templateParams["products"] as $product): ?>
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card card-custom text-white mb-4 shadow-lg">
                         <div class="card-body text-center">

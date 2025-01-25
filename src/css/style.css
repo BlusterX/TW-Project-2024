@@ -1,14 +1,16 @@
 body {
     background-color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
+    padding-top: 65px;
 }
 
 .icon {
-    width: 35px;
+    width: 30px;
 }
 
 .navbar-custom {
     background-color: #8B0000;
+    border-bottom: 3px solid #dfdfdf;
 }
 
 .footer-custom {
@@ -31,11 +33,6 @@ body {
 
 .custom-dropdown {
     min-width: 250px;
-}
-
-
-.btn-custom {
-    
 }
 
 .offert-text-custom {
@@ -64,6 +61,17 @@ body {
 
 .add-to-cart-btn:active {
     transform: scale(1.20);
+}
+
+.accordion-custom {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+}
+
+.accordion-custom.show {
+    max-height: 1000px;
+    padding: 10px 0;
 }
 
 @media (min-width: 992px) {
