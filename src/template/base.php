@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JS-Commerce<?php
+    <title>PG-Commerce<?php
                         if (isset($templateParams["titolo"])) {
                             echo " - " . "$templateParams[titolo]";
                         }
@@ -27,7 +27,7 @@
                 <a <?php isActive('home.php') ?> href="home.php">
                     <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="40" />
                 </a>
-                <h2 class="d-inline-block ms-2 mb-0">JS-COMMERCE</h1>
+                <h2 class="d-inline-block ms-2 mb-0 text-white">PG-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-4">
                 <a <?php isActive('notifications.php') ?> href="notifications.php">
@@ -35,7 +35,9 @@
                     <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"
                     id="notificationBadge" style="display: none; width: 22px; height: 22px;">
                     </span>
-                    <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
+                    <?php if (isUserLoggedIn()){ ?>
+                        <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
+                    <?php } ?>
                 </a>
                 <?php if (isAdmin()): ?>
                     <a <?php isActive('admin.php'); ?> href="admin.php">
@@ -50,7 +52,7 @@
                             <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
                                 <p><strong><?php echo $label; ?>:</strong> <?php echo $_SESSION[$key]; ?></p>
                             <?php endforeach; ?>
-                            <a <?php isActive('your-orders.php'); ?> href="your-orders.php">
+                            <a class="text-decoration-none" <?php isActive('your-orders.php'); ?> href="your-orders.php">
                                 <button class="dropdown-item mouseover-custom">Riepilogo ordini</button>
                             </a>
                             <button class="dropdown-item logoutButton mouseover-custom">Logout</button>
@@ -62,7 +64,9 @@
                     </a>
                 <?php endif; ?>
                 <a <?php isActive('shopping.php'); ?> href="shopping.php">
-                    <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
+                    <?php if (isUserLoggedIn()){ ?>
+                        <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
+                    <?php } ?>
                     <span class="position-absolute translate-middle badge bg-primary border border-light rounded-circle px-1 mt-1"
                         id="cartBadge" style="display: none; width: 22px; height: 22px;">
                     </span>
