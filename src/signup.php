@@ -26,7 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $user = $dbh->getUserByEmail($email);
                 registerLoggedUser($user[0]);
                 $dbh->createCart(getUserId()); // Initialize the cart instance for the new user
-                header("Location: home.php");
+
+                // Once the user is registered, login is needed
+                session_unset();
+                header("Location: login.php");
             }
         }
     } else {
