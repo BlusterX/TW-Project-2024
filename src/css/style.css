@@ -1,14 +1,16 @@
 body {
     background-color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
+    padding-top: 65px;
 }
 
 .icon {
-    width: 35px;
+    width: 30px;
 }
 
 .navbar-custom {
     background-color: #8B0000;
+    border-bottom: 3px solid #dfdfdf;
 }
 
 .footer-custom {

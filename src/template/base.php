@@ -22,31 +22,31 @@
 <body>
     <div class="d-flex flex-column min-vh-100 p-0">
         <!-- NAVBAR -->
-        <nav class="navbar navbar-custom">
+        <nav class="navbar navbar-custom fixed-top">
             <div class="navbar-brand d-flex align-items-center ms-3">
                 <a <?php isActive('home.php') ?> href="home.php">
-                    <img src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" width="40" />
+                    <img class="icon" src="<?php echo UPLOAD_DIR . "logo_prova.png"; ?>" alt="Logo" />
                 </a>
                 <h2 class="d-inline-block ms-2 mb-0 text-white">PG-COMMERCE</h1>
             </div>
-            <div class="d-flex ms-auto me-4">
+            <div class="d-flex ms-auto me-3">
                 <a <?php isActive('notifications.php') ?> href="notifications.php">
                     <span class="bi bi-bell"></span>
                     <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"
                     id="notificationBadge" style="display: none; width: 22px; height: 22px;">
                     </span>
                     <?php if (isUserLoggedIn()){ ?>
-                        <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
+                        <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
                     <?php } ?>
                 </a>
                 <?php if (isAdmin()): ?>
                     <a <?php isActive('admin.php'); ?> href="admin.php">
-                        <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login"/>
+                        <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login"/>
                     </a>
                 <?php elseif (isUserLoggedIn()): ?>
                     <div class="dropdown">
                         <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" />
+                            <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" />
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu" style="border: 5px solid #ccc; border-radius: 10px; padding: 10px;">
                             <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
