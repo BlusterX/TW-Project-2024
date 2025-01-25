@@ -103,12 +103,11 @@ class DatabaseHelper {
         return 0;
     }
     
-    // TODO: set quantity to 1 if not needed
-    public function addProductToCart($userId, $productId, $quantity) {
+    public function addProductToCart($userId, $productId) {
         $query = "INSERT INTO cart_product (id_cart, id_product, quantity)
-            VALUES ((SELECT id_cart FROM cart WHERE id_user = ?), ?, ?)";
+            VALUES ((SELECT id_cart FROM cart WHERE id_user = ?), ?, 1)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('iii', $userId, $productId, $quantity);
+        $stmt->bind_param('ii', $userId, $productId);
         return $stmt->execute();
     }
 
