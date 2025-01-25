@@ -9,13 +9,13 @@ if (!isUserLoggedIn()) {
 }
 
 try {
-    $unreadNotifications = $dbh->getUserUnreadNotifications(getUserId());
-    echo json_encode(["success" => true, "unreadNotifications" => $unreadNotifications]);
+    $cartCount = $dbh->getCartItemsCount(getUserId());
+    echo json_encode(["success" => true, "cartCount" => $cartCount]);
 } catch (Exception $e) {
     echo json_encode([
         "success" => false,
-        "message" => "Errore durante il recupero delle notifiche."
+        "message" => "Errore durante il recupero del numero di prodotti nel carrello."
     ]);
 }
 
-exit();
+?>

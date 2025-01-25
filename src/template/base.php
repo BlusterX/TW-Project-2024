@@ -31,9 +31,9 @@
             </div>
             <div class="d-flex ms-auto me-4">
                 <a <?php isActive('notifications.php') ?> href="notifications.php">
-                    <span class="bi bi-bell"></span><span class="position-absolute 
-                    translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"><span 
-                    class="visually-hidden">unread messages</span>
+                    <span class="bi bi-bell"></span>
+                    <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"
+                    id="notificationBadge" style="display: none; width: 22px; height: 22px;">
                     </span>
                     <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
                 </a>
@@ -63,6 +63,9 @@
                 <?php endif; ?>
                 <a <?php isActive('shopping.php'); ?> href="shopping.php">
                     <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
+                    <span class="position-absolute translate-middle badge bg-primary border border-light rounded-circle px-1 mt-1"
+                        id="cartBadge" style="display: none; width: 22px; height: 22px;">
+                    </span>
                 </a>
             </div>
         </nav>
@@ -78,8 +81,12 @@
             <p class="mb-0">Telefono: +39 123 456 7890</p>
         </footer>
     </div>
-    <script href="js/order-status.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <?php if (isUserLoggedIn()): ?>
+    <script src="js/order-status.js"></script>
+    <script src="js/update-toolbar.js"></script>
+    <?php endif; ?>
     <?php
     if(isset($templateParams["js"])):
         foreach($templateParams["js"] as $script):

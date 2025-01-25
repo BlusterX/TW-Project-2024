@@ -155,6 +155,23 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Return the total number of items in the user's cart
+    public function getCartItemsCount($userId) {
+        $query = "SELECT SUM(quantity) AS totalItems
+            FROM cart_product cp
+            JOIN cart c ON cp.id_cart = c.id_cart
+            WHERE c.id_user = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($row = $result->fetch_assoc()) {
+            return (int) $row['totalItems'];
+        }
+        return 0;
+    }
+
     // Return the quantity of a product in the user's cart
     public function getCartQuantity($userId, $productId) {
         $query = "SELECT quantity
