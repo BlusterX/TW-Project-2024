@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PG-Commerce<?php
-                        if (isset($templateParams["titolo"])) {
-                            echo " - " . "$templateParams[titolo]";
+                        if (isset($templateParams["title"])) {
+                            echo " - " . $templateParams["title"];
                         }
                         ?></title>
 
@@ -74,8 +74,8 @@
             </div>
         </nav>
         <?php
-        if (isset($templateParams["nome"])) {
-            require($templateParams["nome"]);
+        if (isset($templateParams["name"])) {
+            require($templateParams["name"]);
         }
         ?>
         <!-- FOOTER -->

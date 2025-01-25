@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$templateParams["titolo"] = "Registrazione";
-$templateParams["nome"] = "template-signup.php";
+$templateParams["title"] = "Registrazione";
+$templateParams["name"] = "template-signup.php";
 require("template/base.php");
 
 ?>

@@ -5,8 +5,8 @@ if (!isUserLoggedIn()) {
     header("Location: login.php");
 }
 
-$templateParams["titolo"] = "Admin";
-$templateParams["nome"] = "template-admin.php";
+$templateParams["title"] = "Admin";
+$templateParams["name"] = "template-admin.php";
 $templateParams["products"] = $dbh->getAllProducts();
 $templateParams["js"] = array("js/logout.js", "js/confirm-delete.js");
 
