@@ -1,5 +1,5 @@
 <!-- CONTENUTO PRINCIPALE -->
-  <main class="container my-5">
+<main class="container my-5">
     <h2 class="fw-bold mb-4 text-center">Gestione Prodotti</h2>
 
     <div class="d-flex justify-content-end">
@@ -37,7 +37,7 @@
                 Modifica
               </button>
             </a>
-                <button class="btn btn-danger btn-sm m-1 confirmDelete" data-id="<?php echo $product["id_product"]; ?>">
+              <button class="btn btn-danger btn-sm m-1 confirmDelete" data-id="<?php echo $product["id_product"]; ?>">
                 Elimina
               </button>
         </td>

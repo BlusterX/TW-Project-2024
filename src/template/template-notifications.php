@@ -4,7 +4,7 @@
 <?php if (empty($templateParams["notifiche"])) { ?>
     <h1 class="text-center pt-4">Non ci sono notifiche</h1>
 <?php } else { ?>
-<main class="container mt-4">
+<div class="pb-4">
     <?php
         foreach ($templateParams["notifiche"] as $notifica):
         $codNotifica = $notifica["id_notification"];
@@ -29,5 +29,5 @@
         </div>
     </div>
     <?php endforeach;
-} ?>
-</main>
+    } ?>
+</div>

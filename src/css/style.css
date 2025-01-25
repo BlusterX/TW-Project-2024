@@ -33,10 +33,20 @@ body {
 
 .custom-dropdown {
     min-width: 250px;
+    border: 5px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .offert-text-custom {
     color: #ffffff;
+}
+
+.img-your-order{
+    width: 80px; 
+    height: auto; 
+    object-fit: cover; 
+    margin-right: 10px;
 }
 
 .mouseover-custom:hover {
@@ -74,6 +84,26 @@ body {
     padding: 10px 0;
 }
 
+.notification-custom {
+    display: none; 
+    width: 22px; 
+    height: 22px;
+}
+
+.registration-custom {
+    background-color: #fce948;
+    border-radius: 8px;
+    border: #333333 3px solid;
+}
+
+.input-custom {
+    background-color: #fcefa1;
+}
+
+.background-custom {
+    background-color: #D3D3D3;
+    border-radius: 10px;
+}
 @media (min-width: 992px) {
     .icon {
         width: 45px;

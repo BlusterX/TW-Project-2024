@@ -4,7 +4,7 @@
         echo "<h1 class='text-center pt-3'>Il carrello è vuoto</h1>";
     }
     else{
-?>       
+?>
         <main class="container py-4">
             <!-- Intestazione colonne -->
             <div class="row mb-2">
@@ -21,7 +21,7 @@
             ?>
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2">
-                    <div class="d-flex align-items-center justify-content-between p-4" style="background-color: #D3D3D3; border-radius: 10px;">
+                    <div class="d-flex align-items-center justify-content-between p-4 border border-black border-1 background-custom">
                         <!-- Immagine + nome -->
                         <div class="d-flex flex-column align-items-center col-3">
                             <img class="img-card-custom icon" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"/>
@@ -66,5 +66,5 @@
                 </div>
             </div>
             <?php } ?>
-        </main>
+            </main>
 <?php } ?>

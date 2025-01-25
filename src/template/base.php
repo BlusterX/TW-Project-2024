@@ -32,8 +32,7 @@
             <div class="d-flex ms-auto me-3">
                 <a <?php isActive('notifications.php') ?> href="notifications.php">
                     <span class="bi bi-bell"></span>
-                    <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1"
-                    id="notificationBadge" style="display: none; width: 22px; height: 22px;">
+                    <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1 notification-custom" id="notificationBadge">
                     </span>
                     <?php if (isUserLoggedIn()){ ?>
                         <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
@@ -48,7 +47,7 @@
                         <a href="#" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" />
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu" style="border: 5px solid #ccc; border-radius: 10px; padding: 10px;">
+                        <ul class="dropdown-menu dropdown-menu-end text-center custom-dropdown" aria-labelledby="userMenu">
                             <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
                                 <p><strong><?php echo $label; ?>:</strong> <?php echo $_SESSION[$key]; ?></p>
                             <?php endforeach; ?>
@@ -67,8 +66,8 @@
                     <?php if (isUserLoggedIn()){ ?>
                         <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
                     <?php } ?>
-                    <span class="position-absolute translate-middle badge bg-primary border border-light rounded-circle px-1 mt-1"
-                        id="cartBadge" style="display: none; width: 22px; height: 22px;">
+                    <span class="position-absolute translate-middle badge bg-primary border border-light rounded-circle px-1 mt-1 notification-custom"
+                        id="cartBadge">
                     </span>
                 </a>
             </div>
