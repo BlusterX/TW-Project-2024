@@ -24,13 +24,13 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-custom fixed-top">
             <div class="navbar-brand d-flex align-items-center ms-3">
-                <a <?php isActive('home.php') ?> href="home.php">
+                <a <?php isActive("home.php") ?> href="home.php">
                     <img class="icon" src="<?php echo UPLOAD_DIR . "logo.png"; ?>" alt="Logo" />
                 </a>
                 <h2 class="d-inline-block ms-2 mb-0 text-white">PG-COMMERCE</h1>
             </div>
             <div class="d-flex ms-auto me-3">
-                <a <?php isActive('notifications.php') ?> href="notifications.php">
+                <a <?php isActive("notifications.php") ?> href="notifications.php">
                     <span class="bi bi-bell"></span>
                     <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1 notification-custom" id="notificationBadge">
                     </span>
@@ -39,7 +39,7 @@
                     <?php } ?>
                 </a>
                 <?php if (isAdmin()): ?>
-                    <a <?php isActive('admin.php'); ?> href="admin.php">
+                    <a <?php isActive("admin.php"); ?> href="admin.php">
                         <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login"/>
                     </a>
                 <?php elseif (isUserLoggedIn()): ?>
@@ -51,7 +51,7 @@
                             <?php foreach (['name' => 'Nome', 'surname' => 'Cognome', 'username' => 'Username'] as $key => $label): ?>
                                 <p><strong><?php echo $label; ?>:</strong> <?php echo $_SESSION[$key]; ?></p>
                             <?php endforeach; ?>
-                            <a class="text-decoration-none" <?php isActive('your-orders.php'); ?> href="your-orders.php">
+                            <a class="text-decoration-none" <?php isActive("your-orders.php"); ?> href="your-orders.php">
                                 <button class="dropdown-item mouseover-custom">Riepilogo ordini</button>
                             </a>
                             <button class="dropdown-item logoutButton mouseover-custom">Logout</button>
@@ -62,7 +62,7 @@
                         <img class="me-4 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" width="40" />
                     </a>
                 <?php endif; ?>
-                <a <?php isActive('shopping.php'); ?> href="shopping.php">
+                <a <?php isActive("shopping.php"); ?> href="shopping.php">
                     <?php if (isUserLoggedIn()){ ?>
                         <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
                     <?php } ?>
