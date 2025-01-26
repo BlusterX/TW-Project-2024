@@ -1,4 +1,4 @@
-<header class="bg-dark text-white text-center py-3">
+<header class="bg-dark text-white text-center py-4">
     <h1>Riepilogo Ordini</h1>
 </header>
 <div class="container my-4">
@@ -28,7 +28,7 @@
                         <?php } else { ?>
                             <span class="badge bg-warning status-badge">In elaborazione</span>
                         <?php } ?>
-                        <h5 class="mt-3">Prodotti:</h5>
+                        <p class="mt-3">Prodotti:</p>
                         <?php if (!empty($products)): ?>
                             <?php foreach ($products as $product): ?>
                                 <div class="d-flex align-items-center mb-3">
