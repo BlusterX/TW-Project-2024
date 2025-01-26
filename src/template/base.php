@@ -9,7 +9,7 @@
                             echo " - " . $templateParams["title"];
                         }
                         ?></title>
-    <link rel="icon" href="<?php echo UPLOAD_DIR . "logo.png"; ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo UPLOAD_DIR . "logo.png"; ?>" type="image/png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
@@ -79,8 +79,8 @@
         ?>
         <!-- FOOTER -->
         <footer class="text-center text-white p-4 footer-custom w-100 mt-auto">
-            <p class="mb-1">© 2025 JS-Commerce. Tutti i diritti riservati.</p>
-            <p class="mb-0">Contatti: support@jscommerce.com</p>
+            <p class="mb-1">© 2025 PG-Commerce. Tutti i diritti riservati.</p>
+            <p class="mb-0">Contatti: support@pgcommerce.com</p>
             <p class="mb-0">Telefono: +39 123 456 7890</p>
         </footer>
     </div>
