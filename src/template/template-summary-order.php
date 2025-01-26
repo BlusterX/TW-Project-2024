@@ -1,4 +1,4 @@
-<header class="bg-dark text-white text-center py-3 pt-2">
+<header class="bg-dark text-white text-center py-2 pt-4">
     <h1>Riepilogo Ordine</h1>
 </header>
 <div class="container my-4">
