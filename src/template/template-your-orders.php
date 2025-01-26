@@ -36,7 +36,7 @@
                                     $quantity = $product["quantity"];
                                     $finalPrice = number_format($product["price"] * (1 - $product["discount"] / 100) * $quantity, 2, '.', '');
                                     ?>
-                                    <img class="img-your-order" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>">
+                                    <img class="img-your-order" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>" />
                                     <span><?php echo $product["name"]; ?> x<?php echo $quantity; ?> (€<?php echo $finalPrice; ?>)</span>
                                 </div>
                             <?php endforeach; ?>
