@@ -6,7 +6,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Ordine n°<?php echo $templateParams["order_id"]; ?>
+                    Dettagli ordine
                 </div>
                 <div class="card-body">
                     <?php
@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="text-center my-3">
-                <a href="your-orders.php?order_id=<?php echo $templateParams["order_id"]; ?>">
+                <a href="api/generate-order.php?cart_id=<?php echo $templateParams["cart_id"]; ?>">
                     <button class="btn btn-success btn-lg w-100 mb-3">Paga ora</button>
                 </a>
-                <a href="api/cancel-order.php?order_id=<?php echo $templateParams["order_id"]; ?>">
+                <a href="home.php">
                     <button class="btn btn-danger btn-lg w-100">Annulla ordine</button>
                 </a>
             </div>

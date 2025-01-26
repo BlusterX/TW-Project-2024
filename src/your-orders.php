@@ -8,7 +8,6 @@ if(!isUserLoggedIn()) {
 // An order has been confirmed and user has completed the payment
 if(isset($_GET["order_id"])) {
     $idOrder = $_GET["order_id"];
-    $dbh->generateShippingDate($idOrder); // Assign the shipping date
 
     // Notify the user that the order has been confirmed
     $notificationTitle = "L'ordine #" . $idOrder . " è in spedizione";

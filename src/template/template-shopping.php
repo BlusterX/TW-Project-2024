@@ -59,7 +59,7 @@ if ($templateParams["products"] == NULL) {
         <?php if ($tot != 0) { ?>
             <div class="row mb-3">
                 <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-center">
-                    <a href="api/generate-order.php?cart_id=<?php echo $templateParams['cart_id']; ?>">
+                    <a href="order.php?cart_id=<?php echo $templateParams['cart_id']; ?>">
                         <button type="submit" class="btn btn-success btn-lg">Completa acquisto</button>
                     </a>
                 </div>

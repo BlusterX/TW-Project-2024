@@ -20,7 +20,8 @@ foreach($products as $product) {
 
     $dbh->addProductToOrder($orderId, $productId, $quantity, $price);
     $dbh->removeFromCart($userId, $productId);
+    $dbh->generateShippingDate($orderId); // Assign the shipping date
 }
 
-header("Location: ../order.php?order_id=" . $orderId);
+header("Location: ../your-orders.php?=" . $orderId);
 ?>
