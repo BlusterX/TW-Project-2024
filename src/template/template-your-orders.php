@@ -33,10 +33,11 @@
                             <?php foreach ($products as $product): ?>
                                 <div class="d-flex align-items-center mb-3">
                                     <?php
-                                    $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
+                                    $quantity = $product["quantity"];
+                                    $finalPrice = number_format($product["price"] * (1 - $product["discount"] / 100) * $quantity, 2, '.', '');
                                     ?>
                                     <img class="img-your-order" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>">
-                                    <span><?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo $discountPrice; ?>)</span>
+                                    <span><?php echo $product["name"]; ?> x<?php echo $quantity; ?> (€<?php echo $finalPrice; ?>)</span>
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>
