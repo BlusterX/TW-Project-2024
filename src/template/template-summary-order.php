@@ -16,7 +16,7 @@
                         <?php
                         $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
                         ?>
-                        <p class="card-text"><strong><?php echo ++$num_prod; ?>° Prodotto:</strong> <?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo number_format($discountPrice * $product["quantity"], 2, '.', ''); ?>)</p>
+                        <p class="card-text"><strong><?php echo ++$num_prod; ?>° Prodotto:</strong> <?php echo $product["name"]; ?> (€<?php echo number_format($discountPrice, 2, '.', ''); ?>) x<?php echo $product["quantity"]; ?></p>
                     <?php
                         $tot += $discountPrice * $product["quantity"];
                     endforeach; ?>
