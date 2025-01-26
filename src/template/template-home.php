@@ -65,7 +65,6 @@ if (!empty($templateParams["products_with_discount"])) {
                     </div>
                 </div>
             </div>
+        <?php endforeach; ?>
     </div>
-<?php endforeach; ?>
-</div>
 </div>
