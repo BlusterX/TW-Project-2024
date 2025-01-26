@@ -8,7 +8,7 @@ function updateBadge(badge, count) {
 }
 
 function updateNotificationsBadge() {
-    const badge = document.querySelector("#notificationBadge");
+    const badge = document.getElementById("notificationBadge");
     const url = "api/check-notifications.php";
     fetch(url)
         .then((response) => {
@@ -26,7 +26,7 @@ function updateNotificationsBadge() {
 }
 
 function updateCartBadge() {
-    const badge = document.querySelector("#cartBadge");
+    const badge = document.getElementById("cartBadge");
     const url = "api/cart-count.php";
     fetch(url)
         .then((response) => {

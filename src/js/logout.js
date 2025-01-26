@@ -1,6 +1,6 @@
-const logoutButton = document.querySelector('.logoutButton');
+const logoutButton = document.querySelector(".logoutButton");
 
-logoutButton.addEventListener('click', function () {
+logoutButton.addEventListener("click", function () {
     const modalHTML = `
     <div class="modal fade logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -17,15 +17,15 @@ logoutButton.addEventListener('click', function () {
         </div>
     </div>
 `;
-    const body = document.querySelector('body');
-    body.insertAdjacentHTML('beforeend', modalHTML);
+    const body = document.querySelector("body");
+    body.insertAdjacentHTML("beforeend", modalHTML);
 
-    const modalElement = document.querySelector('.logoutModal');
+    const modalElement = document.querySelector(".logoutModal");
 
     const logoutModal = new bootstrap.Modal(modalElement);
     logoutModal.show();
 
-    modalElement.addEventListener('hidden.bs.modal', function () {
+    modalElement.addEventListener("hidden.bs.modal", function () {
         modalElement.remove();
     });
 });

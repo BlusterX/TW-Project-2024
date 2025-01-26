@@ -400,7 +400,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function updateDeleteProduct($productId) {
+    public function updateDeletedProduct($productId) {
         $query = "UPDATE product SET is_deleted = 1 WHERE id_product = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $productId);

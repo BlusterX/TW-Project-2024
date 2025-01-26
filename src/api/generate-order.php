@@ -11,8 +11,8 @@ if(!isset($_GET["cart_id"])) {
 $userId = getUserId();
 $cartId = $_GET["cart_id"];
 $products = $dbh->getCartProducts($userId);
-
 $orderId = $dbh->createOrder($userId);
+
 foreach($products as $product) {
     $productId = $product["id_product"];
     $price = $product["price"];

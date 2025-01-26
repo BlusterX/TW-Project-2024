@@ -19,7 +19,7 @@ if(!$notification["is_read"]) {
     if ($dbh->markNotificationAsRead($notificationId)) {
         echo json_encode(["success" => true, "message" => "Stato notifica cambiato a 'letta'."]);
     } else {
-        echo json_encode(["success" => false, "error" => "Errore nell'aggiornamento del database"]);
+        echo json_encode(["success" => false, "error" => "Errore nell'aggiornamento del database."]);
     }
 } else {
     echo json_encode(["success" => false, "message" => "La notifica è già stata letta."]);

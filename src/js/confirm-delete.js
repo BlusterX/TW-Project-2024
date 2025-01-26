@@ -1,6 +1,6 @@
-document.querySelectorAll('.confirmDelete').forEach(button => {
-    button.addEventListener('click', function () {
-        const productId = this.getAttribute('data-id');
+document.querySelectorAll(".confirmDelete").forEach(button => {
+    button.addEventListener("click", function () {
+        const productId = this.getAttribute("data-id");
         const modalHTML = `
         <div class="modal fade confirmModal" tabindex="-1" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -18,15 +18,15 @@ document.querySelectorAll('.confirmDelete').forEach(button => {
         </div>
         `;
 
-        const body = document.querySelector('body');
-        body.insertAdjacentHTML('beforeend', modalHTML);
+        const body = document.querySelector("body");
+        body.insertAdjacentHTML("beforeend", modalHTML);
 
-        const modalElement = document.querySelector('.confirmModal');
+        const modalElement = document.querySelector(".confirmModal");
 
         const confirmDeleteModal = new bootstrap.Modal(modalElement);
         confirmDeleteModal.show();
 
-        modalElement.addEventListener('hidden.bs.modal', function () {
+        modalElement.addEventListener("hidden.bs.modal", function () {
             modalElement.remove();
         });
     });

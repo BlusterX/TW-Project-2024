@@ -4,8 +4,6 @@ function initializeAccordions() {
     accordionItems.forEach((item) => {
         const collapseElem = item.querySelector(".accordion-collapse");
         const isExpanded = collapseElem.classList.contains("show");
-
-        // Imposta il valore iniziale di max-height
         collapseElem.style.maxHeight = isExpanded ? collapseElem.scrollHeight + "px" : "0";
     });
 }
@@ -15,7 +13,7 @@ function showOrderDetails(button, collapseElement) {
     button.setAttribute("aria-expanded", "true");
     collapseElement.classList.add("show");
 
-    // Calcola l'altezza del contenuto e impostala per l'animazione
+    // Calculate the height of the element for the animation
     collapseElement.style.maxHeight = collapseElement.scrollHeight + "px";
 }
 
@@ -25,12 +23,10 @@ function hideOrderDetails(button, collapseElement) {
     collapseElement.style.maxHeight = collapseElement.scrollHeight + "px";
     collapseElement.offsetHeight;
     collapseElement.classList.remove("show");
-
-    // Imposta l'altezza a 0 per il collasso
     collapseElement.style.maxHeight = "0";
 }
 
-// Mostra gli ordini non consegnati o l'ultimo ordine
+// Show details of the pending orders, or the last order if all orders are delivered
 function showLastOrders() {
     let ordersToShow = [];
     let lastOrder = null;
@@ -65,12 +61,11 @@ function showLastOrders() {
 initializeAccordions();
 showLastOrders();
 
-// Aggiungi la funzionalità di toggle
 accordionItems.forEach((item) => {
     const collapseElem = item.querySelector(".accordion-collapse");
     const button = item.querySelector(".accordion-button");
 
-    // Aggiungi il listener per l'apertura e chiusura
+    // Add toggle functionality to each order
     button.addEventListener("click", () => {
         const isOpen = button.getAttribute("aria-expanded") === "true";
         isOpen ? hideOrderDetails(button, collapseElem) : showOrderDetails(button, collapseElem);

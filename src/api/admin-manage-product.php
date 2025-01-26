@@ -23,9 +23,7 @@ switch($_GET["action"]) {
         break;
     case "del":
         $productId = $_GET["id"];
-        $dbh->updateDeleteProduct($productId);
-        //$dbh->removeFromAllCarts($productId);
-        ///$dbh->deleteProduct($productId);
+        $dbh->updateDeletedProduct($productId);
         break;
 }
 
