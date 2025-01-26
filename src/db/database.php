@@ -406,6 +406,20 @@ class DatabaseHelper {
         $stmt->bind_param('i', $productId);
         return $stmt->execute();
     }
+
+    public function getUsersWithProductInCart($productId) {
+        $query = "SELECT u.id_user
+            FROM user u
+            JOIN cart c ON u.id_user = c.id_user
+            JOIN cart_product cp ON c.id_cart = cp.id_cart
+            WHERE cp.id_product = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $productId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>

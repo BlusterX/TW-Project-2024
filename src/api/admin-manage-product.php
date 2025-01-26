@@ -24,6 +24,13 @@ switch($_GET["action"]) {
     case "del":
         $productId = $_GET["id"];
         $dbh->updateDeletedProduct($productId);
+        $users = $dbh->getUsersWithProductInCart($productId);
+        $product = $dbh->getProductById($productId);
+        $notificationMessage = "Un prodotto che avevi nel carrello è stato rimosso dal catalogo: ";
+        $notificationTitle = "Prodotto nel carrello non più disponibile";
+        foreach($users as $user) {
+            $dbh->createNotification($user["id_user"], $notificationTitle, $notificationMessage . $product["name"]);
+        }
         break;
 }
 
