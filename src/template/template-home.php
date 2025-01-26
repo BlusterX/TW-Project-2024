@@ -13,7 +13,7 @@ if (!empty($templateParams["products_with_discount"])) {
             <img src="<?php echo UPLOAD_DIR . $bestProduct; ?>" alt="Offerta del giorno" class="img-fluid img-offert-custom"/>
             <div class="ms-lg-4 mt-3 mt-lg-0 offert-text-custom">
                 <h2 class="fw-bold ms-2">Offerta del giorno! Solo a <?php echo number_format($discountedPrice, 2); ?>€</h2>
-                <p class="fs-4">Affrettatevi, sconto del <?php echo $bestDiscount; ?>%!</p>
+                <h3 class="fs-4">Affrettatevi, sconto del <?php echo $bestDiscount; ?>%!</h3>
             </div>
         </div>
     </header>
