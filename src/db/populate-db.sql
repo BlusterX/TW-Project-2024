@@ -1,8 +1,22 @@
-INSERT INTO `user` (username, email, password, name, surname) VALUES
-('testuser', 'test@example.com', '$2y$10$eImiTXuWVxfM37uY4JANjQ8VVKf7A6xgZjwFqi/Nj3T4N0qP/a0z.', 'Gino', 'Pino');
+INSERT INTO `user` (username, email, `password`, `name`, surname, is_admin) VALUES
+('admin', 'admin@example.it', '$2y$10$0qmNsbN2TY0qsujQ53.2uu94QOuGd2SCk5gqaHGB7bL/SzHPWam.S', 'Admin', 'Admin', 1),
+('gferrari', 'gferrari@example.it', '$2y$10$KLjjplhDaajPmi8/jydhx.L0Rq7K727J0DGfz4fOHEkO36eNE1Cs.', 'Giulia', 'Ferrari', 0),
+('sandreatti', 'sandreatti@example.it', '$2y$10$WduRoRvGSpFpqRy/gG6gVOX5OdR/r7viW4bZTY4HB3WX0OuxQCeKu', 'Simone', 'Andreatti', 0),
+('mromano', 'mromano@example.it', '$2y$10$TKkhrzV.fNgA4Zg4LKUfD.DT75BH3wlKC6hnkTokI.eNg5I.Hzqt6' , 'Martina', 'Romano', 0),
+('fdonnini', 'fdonnini@example.it', '$2y$10$DZL2i3LtEnGmZXS/RpXiXeObIQJP7SF1Q/8KzizpnZMXKpaXXJOeG', 'Fabio', 'Donnini', 0);
 
 INSERT INTO notification (id_user, `message`, is_read) VALUES
-(9, 'Test notification', 0);
+(1, 'Test notification', 0);
+(1, 'Test 2 notification', 0);
+(1, 'Test 3 notification', 0);
+(1, 'Test 4 notification', 0);
+
+INSERT INTO cart (id_user) VALUES
+(1),
+(2),
+(3),
+(4),
+(5);
 
 INSERT INTO product (`name`, price, stock, `description`, img) VALUES
 ('1996 Nintendo Console', 349.99, 5, 'La console Nintendo del 1996 è un classico senza tempo, perfetta per i collezionisti e gli appassionati di retrogaming.', '1996_nintendo_console.png');
