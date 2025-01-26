@@ -15,7 +15,7 @@
           <tr>
             <th>Nome</th>
             <th>Prezzo</th>
-            <th>Sconto</th>
+            <th class="d-none d-md-table-cell">Sconto</th>
             <th>Stock</th>
             <th class="d-none d-md-table-cell">Immagine</th>
             <th class="d-none d-md-table-cell">Descrizione</th>
@@ -27,7 +27,7 @@
       <tr class="text-center">
         <td><?php echo $product["name"]; ?></td>
         <td>€<?php echo $product["price"]; ?></td>
-        <td><?php echo $product["discount"]; ?>%</td>
+        <td class="d-none d-md-table-cell"><?php echo $product["discount"]; ?>%</td>
         <td><?php echo $product["stock"]; ?></td>
         <td class="d-none d-md-table-cell"><img class="img-fluid icon" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>"></td>
         <td class="d-none d-md-table-cell"><?php echo $product["description"]; ?></td>
