@@ -53,7 +53,7 @@ if ($templateParams["products"] == NULL) {
         <div class="row mb-3">
             <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-end">
                 <span class="fw-bold fs-5 me-2">TOTALE:</span>
-                <span class="fs-5 fw-bold">€<?php echo $tot; ?></span>
+                <span class="fs-5 fw-bold">€<?php echo number_format($tot,2, '.', ''); ?></span>
             </div>
         </div>
         <?php if ($tot != 0) { ?>

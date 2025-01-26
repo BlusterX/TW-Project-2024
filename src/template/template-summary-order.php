@@ -20,7 +20,7 @@
                     <?php
                         $tot += $discountPrice * $product["quantity"];
                     endforeach; ?>
-                    <p class="card-text"><strong>Prezzo totale:</strong> €<?php echo $tot; ?></p>
+                    <p class="card-text"><strong>Prezzo totale:</strong> €<?php echo number_format($tot,2, '.', ''); ?></p>
                 </div>
             </div>
             <div class="text-center my-3">

@@ -217,11 +217,11 @@ class DatabaseHelper {
         return $stmt->insert_id;
     }
 
-    public function addProductToOrder($orderId, $productId, $quantity, $price) {
-        $query = "INSERT INTO order_product (id_order, id_product, quantity, price)
-            VALUES (?, ?, ?, ?)";
+    public function addProductToOrder($orderId, $productId, $quantity, $price, $discount) {
+        $query = "INSERT INTO order_product (id_order, id_product, quantity, price, discount)
+            VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('iiid', $orderId, $productId, $quantity, $price);
+        $stmt->bind_param('iiidi', $orderId, $productId, $quantity, $price, $discount);
         return $stmt->execute();
     }
 
@@ -235,6 +235,19 @@ class DatabaseHelper {
 
     public function getOrderedProducts($orderId) {
         $query = "SELECT p.id_product, p.name, p.price, p.discount, p.img, op.quantity
+            FROM order_product op
+            JOIN product p ON op.id_product = p.id_product
+            WHERE op.id_order = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $orderId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getOriginalOrderProducts($orderId) {
+        $query = "SELECT p.id_product, p.name, op.price, op.discount, p.img, op.quantity
             FROM order_product op
             JOIN product p ON op.id_product = p.id_product
             WHERE op.id_order = ?";

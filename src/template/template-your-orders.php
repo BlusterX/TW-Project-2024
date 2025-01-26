@@ -6,7 +6,7 @@
         <?php foreach ($templateParams["orders"] as $order):
             $orderDate = formatDate($order["date"]);
             $shippingDate = formatDate($order["date_shipping"]);
-            $products = $dbh->getOrderedProducts($order["id_order"]); ?>
+            $products = $dbh->getOriginalOrderProducts($order["id_order"]); ?>
 
             <div class="accordion-item" data-order-id="<?php echo $order['id_order']; ?>">
                 <p class="accordion-header fs-5">
