@@ -35,9 +35,9 @@ if (!empty($templateParams["products_with_discount"])) {
                             ?>
                             <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?>
                             <?php if (!empty($product['description'])): ?>
-                                <i class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
+                                <span class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
                                     <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
-                                </i>
+                            </span>
                             <?php endif; ?>
                             </p>
                             <p class="card-text fw-bolder fs-5">€<?php echo number_format($discountedPrice, 2); ?> (-<?php echo $product["discount"] ?>%)</p>
@@ -46,9 +46,9 @@ if (!empty($templateParams["products_with_discount"])) {
                                 <p class="card-text fw-bolder fs-5">
                                     €<?php echo $product["price"]; ?>
                                     <?php if (!empty($product['description'])): ?>
-                                        <i class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
+                                        <span class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
                                             <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
-                                        </i>
+                                    </span>
                                     <?php endif; ?>
                                 </p>
                                 
