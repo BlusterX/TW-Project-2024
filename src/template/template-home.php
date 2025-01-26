@@ -34,38 +34,38 @@ if (!empty($templateParams["products_with_discount"])) {
                             $discountedPrice = $product["price"] - ($product["price"] * $product["discount"] / 100);
                         ?>
                             <p class="card-text text-decoration-line-through">€<?php echo $product["price"]; ?>
-                            <?php if (!empty($product['description'])): ?>
-                                <span class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
-                                    <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
-                            </span>
-                            <?php endif; ?>
+                                <?php if (!empty($product['description'])): ?>
+                                    <span class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
+                                        <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product" />
+                                    </span>
+                                <?php endif; ?>
                             </p>
                             <p class="card-text fw-bolder fs-5">€<?php echo number_format($discountedPrice, 2); ?> (-<?php echo $product["discount"] ?>%)</p>
-                            <?php } else { ?>
-                                <p class="card-text">Prezzo attuale:</p>
-                                <p class="card-text fw-bolder fs-5">
-                                    €<?php echo $product["price"]; ?>
-                                    <?php if (!empty($product['description'])): ?>
-                                        <span class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
-                                            <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product"/>
+                        <?php } else { ?>
+                            <p class="card-text">Prezzo attuale:</p>
+                            <p class="card-text fw-bolder fs-5">
+                                €<?php echo $product["price"]; ?>
+                                <?php if (!empty($product['description'])): ?>
+                                    <span class="bi bi-info-circle text-info" data-bs-toggle="tooltip" title="<?php echo $product['description']; ?>">
+                                        <img class="img-fluid infopoint" src="<?php echo UPLOAD_DIR . "info.png"; ?>" alt="info of the product" />
                                     </span>
-                                    <?php endif; ?>
-                                </p>
-                                
-                            <?php } ?>
-                            <?php if ($product["stock"] > 0): ?>
-                                <p class="card-text fw-bolder stock-count">Rimasti: <?php echo $product["stock"]; ?></p>
-                                <a href="<?php echo isUserLoggedIn() ? '#' : 'login.php'; ?>"
-                                    data-product-id="<?php echo $product["id_product"]; ?>"
-                                    class="btn fw-bold btn-custom add-to-cart-btn">Aggiungi</a>
-                            <?php else: ?>
-                                <p class="text-danger fw-bold mt-3">Esaurito</p>
-                                <button class="btn btn-secondary fw-bold" disabled>Non Disponibile</button>
-                            <?php endif; ?>
-                        </div>
+                                <?php endif; ?>
+                            </p>
+
+                        <?php } ?>
+                        <?php if ($product["stock"] > 0): ?>
+                            <p class="card-text fw-bolder stock-count">Rimasti: <?php echo $product["stock"]; ?></p>
+                            <a href="<?php echo isUserLoggedIn() ? '#' : 'login.php'; ?>"
+                                data-product-id="<?php echo $product["id_product"]; ?>"
+                                class="btn fw-bold btn-custom add-to-cart-btn">Aggiungi</a>
+                        <?php else: ?>
+                            <p class="text-danger fw-bold mt-3">Esaurito</p>
+                            <button class="btn btn-secondary fw-bold" disabled>Non Disponibile</button>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
-        <?php endforeach; ?>
     </div>
+<?php endforeach; ?>
+</div>
 </div>
