@@ -18,7 +18,7 @@ function updateProductCard(button, data) {
 const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
 addToCartButtons.forEach((button) => {
     button.addEventListener("click", function (e) {
-        // Prevent page refresh
+        // Avoid page refresh
         e.preventDefault();
 
         const productId = this.getAttribute("data-product-id");
@@ -33,9 +33,9 @@ addToCartButtons.forEach((button) => {
             .then((data) => {
                 if (data.success) {
                     updateProductCard(this, data);
-                    console.log("Prodotto aggiunto al carrello:", data.message);
+                    console.log(data.message);
                 } else {
-                    console.error("Errore durante l'aggiunta al carrello:", data.message);
+                    console.error(data.message);
                 }
             })
             .catch((error) => {

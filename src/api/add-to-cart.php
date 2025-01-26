@@ -37,7 +37,7 @@ try {
     echo json_encode([
         "success" => false,
         "remainingStock" => $newStock,
-        "error" => "Errore durante l\'aggiunta al carrello: " . $e->getMessage()
+        "error" => $e->getMessage()
     ]);
 }
 

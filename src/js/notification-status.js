@@ -19,11 +19,11 @@ function addClickListener(button) {
                     button.classList.remove("text-warning");
                     button.classList.add("text-success");
                 } else {
-                    console.error("Errore durante l'aggiornamento della notifica:", data.error);
+                    console.error("Errore durante l'aggiornamento della notifica: ", data.error);
                 }
             })
             .catch((error) => {
-                console.error("Errore nella richiesta AJAX:", error);
+                console.error("Errore nella richiesta AJAX: ", error);
             });
     });
 }
@@ -45,7 +45,7 @@ function updateNotificationsList() {
                 unreadNotifications.forEach((notification) => {
                     const notificationId = notification.id_notification;
                     // Check if the notification already exists in the list
-                    if (document.querySelector(`#collapseSuccess${notificationId}`) == null) {
+                    if (document.getElementById(`collapseSuccess${notificationId}`) == null) {
                         const accordionItem = document.createElement("div");
                         accordionItem.className = "accordion-item";
 
@@ -85,7 +85,7 @@ function updateNotificationsList() {
             }
         })
         .catch((error) => {
-            console.error("Errore durante l'aggiornamento della lista notifiche:", error);
+            console.error("Errore durante l'aggiornamento della lista notifiche: ", error);
         });
 }
 
