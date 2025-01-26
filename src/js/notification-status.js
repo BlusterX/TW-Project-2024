@@ -29,7 +29,7 @@ function addClickListener(button) {
 }
 
 function updateNotificationsList() {
-    const notificationsContainer = document.getElementById("notificationsAccordion");
+    const notificationsContainer = document.getElementsByClassName("notificationsAccordion");
     const url = "api/check-notifications.php";
     fetch(url)
         .then((response) => {
@@ -67,7 +67,7 @@ function updateNotificationsList() {
                             <div id="${accordionId}"
                                  class="accordion-collapse collapse"
                                  aria-labelledby="${headerId}" 
-                                 data-bs-parent="#notificationsAccordion">
+                                 data-bs-parent=".notificationsAccordion">
                                 <div class="accordion-body">
                                     ${notification.message}
                                 </div>

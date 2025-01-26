@@ -11,7 +11,7 @@
         $accordionId = "collapseSuccess" . $codNotifica;
         $headerId = "successNotification" . $codNotifica;
     ?>
-    <div class="accordion" id="notificationsAccordion">
+    <div class="accordion notificationsAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="<?php echo $headerId; ?>">
                 <button class="accordion-button <?php echo $notifica["is_read"] ? "text-success" : "text-warning" ?> fw-bold collapsed" type="button"
@@ -21,7 +21,7 @@
                 </button>
             </h2>
             <div id="<?php echo $accordionId; ?>" class="accordion-collapse collapse"
-                aria-labelledby="<?php echo $headerId; ?>" data-bs-parent="#notificationsAccordion">
+                aria-labelledby="<?php echo $headerId; ?>" data-bs-parent=".notificationsAccordion">
                 <div class="accordion-body">
                     <?php echo $notifica["message"]; ?>
                 </div>
