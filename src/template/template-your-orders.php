@@ -9,11 +9,11 @@
             $products = $dbh->getOrderedProducts($order["id_order"]); ?>
 
             <div class="accordion-item" data-order-id="<?php echo $order['id_order']; ?>">
-                <h2 class="accordion-header">
+                <p class="accordion-header fs-5">
                     <button class="accordion-button collapsed" type="button" aria-expanded="false">
                         Ordine #<?php echo $order["id_order"]; ?>
                     </button>
-                </h2>
+                </p>
                 <div class="accordion-collapse collapse accordion-custom">
                     <div class="accordion-body">
                         <div class="mb-2">Data effettuazione: <?php echo $orderDate ?></div>
