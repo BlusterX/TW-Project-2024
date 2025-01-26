@@ -12,7 +12,7 @@
     <link rel="icon" href="<?php echo UPLOAD_DIR . "logo.png"; ?>" type="image/png">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    
+
     <!-- Roboto font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- CSS -->
@@ -34,13 +34,13 @@
                     <span class="bi bi-bell"></span>
                     <span class="position-absolute translate-middle badge bg-success border border-light rounded-circle px-1 mt-1 notification-custom" id="notificationBadge">
                     </span>
-                    <?php if (isUserLoggedIn()){ ?>
-                        <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications"/>
+                    <?php if (isUserLoggedIn()) { ?>
+                        <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "bell.png"; ?>" alt="Notifications" />
                     <?php } ?>
                 </a>
                 <?php if (isAdmin()): ?>
                     <a <?php isActive("admin.php"); ?> href="admin.php">
-                        <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login"/>
+                        <img class="me-3 icon" src="<?php echo UPLOAD_DIR . "login.png"; ?>" alt="Login" />
                     </a>
                 <?php elseif (isUserLoggedIn()): ?>
                     <div class="dropdown">
@@ -63,8 +63,8 @@
                     </a>
                 <?php endif; ?>
                 <a <?php isActive("shopping.php"); ?> href="shopping.php">
-                    <?php if (isUserLoggedIn()){ ?>
-                        <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart"/>
+                    <?php if (isUserLoggedIn()) { ?>
+                        <img class="icon" src="<?php echo UPLOAD_DIR . "shopping-cart.png"; ?>" alt="Shopping-cart" />
                     <?php } ?>
                     <span class="position-absolute translate-middle badge bg-primary border border-light rounded-circle px-1 mt-1 notification-custom"
                         id="cartBadge">
@@ -89,14 +89,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <?php if (isUserLoggedIn()): ?>
-    <script src="js/order-status.js"></script>
-    <script src="js/update-toolbar.js"></script>
+        <script src="js/order-status.js"></script>
+        <script src="js/update-toolbar.js"></script>
     <?php endif; ?>
     <?php
-    if(isset($templateParams["js"])):
-        foreach($templateParams["js"] as $script):
+    if (isset($templateParams["js"])):
+        foreach ($templateParams["js"] as $script):
     ?>
-        <script src="<?php echo $script; ?>"></script>
+            <script src="<?php echo $script; ?>"></script>
     <?php
         endforeach;
     endif;

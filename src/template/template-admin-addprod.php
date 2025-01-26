@@ -3,12 +3,12 @@
     <form class="m-4" action="api/admin-manage-product.php?action=add" method="POST" enctype="multipart/form-data">
         <div class="form-group mb-3">
             <label for="name">Nome del prodotto:</label>
-            <input type="text" class="form-control" id="name" name="name" required/>
+            <input type="text" class="form-control" id="name" name="name" required />
         </div>
 
         <div class="form-group mb-3">
             <label for="price">Prezzo:</label>
-            <input type="number" class="form-control" id="price" name="price" step="0.01" required/>
+            <input type="number" class="form-control" id="price" name="price" step="0.01" required />
         </div>
 
         <div class="form-group mb-3">
@@ -18,16 +18,16 @@
 
         <div class="form-group mb-3">
             <label for="image">Immagine del prodotto:</label>
-            <input type="file" class="form-control-file" id="img" name="img" accept="img/*" required/>
+            <input type="file" class="form-control-file" id="img" name="img" accept="img/*" required />
         </div>
 
         <div class="form-group mb-3">
             <label for="stock">Numero in stock:</label>
-            <input type="number" class="form-control" id="stock" name="stock" required/>
+            <input type="number" class="form-control" id="stock" name="stock" required />
         </div>
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Aggiungi Prodotto</button>
-        </div>      
+        </div>
     </form>
 </div>

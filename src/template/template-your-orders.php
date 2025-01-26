@@ -23,17 +23,17 @@
                             </span>
                         </div>
                         Stato:
-                        <?php if($order["is_delivered"]) { ?>
-                         <span class="badge bg-success status-badge">Consegnato</span>
+                        <?php if ($order["is_delivered"]) { ?>
+                            <span class="badge bg-success status-badge">Consegnato</span>
                         <?php } else { ?>
-                        <span class="badge bg-warning status-badge">In elaborazione</span>
-                        <?php } ?>  
+                            <span class="badge bg-warning status-badge">In elaborazione</span>
+                        <?php } ?>
                         <h5 class="mt-3">Prodotti:</h5>
                         <?php if (!empty($products)): ?>
                             <?php foreach ($products as $product): ?>
                                 <div class="d-flex align-items-center mb-3">
-                                    <?php 
-                                        $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
+                                    <?php
+                                    $discountPrice = number_format($product["price"] * (1 - $product["discount"] / 100), 2, '.', '');
                                     ?>
                                     <img class="img-your-order" src="<?php echo UPLOAD_DIR . $product["img"]; ?>" alt="<?php echo $product["name"]; ?>">
                                     <span><?php echo $product["name"]; ?> x<?php echo $product["quantity"]; ?> (€<?php echo $discountPrice; ?>)</span>
