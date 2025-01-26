@@ -9,7 +9,7 @@ if (!isUserLoggedIn() || !isset($_GET["action"])) {
 
 switch($_GET["action"]) {
     case "add":
-        list($result, $msg) = uploadImage(UPLOAD_DIR, $_FILES["img"]);
+        list($result, $msg) = uploadImage("../" . UPLOAD_DIR, $_FILES["img"]);
         if(!$result) {
             exit("Errore caricamento immagine. $msg");
         }
