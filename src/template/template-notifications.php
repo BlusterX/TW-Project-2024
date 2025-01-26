@@ -1,4 +1,4 @@
-<header class="bg-dark text-white text-center py-4">
+<header class="bg-dark text-white text-center py-2 pt-4">
     <h1>Notifiche</h1>
 </header>
 <?php if (empty($templateParams["notifiche"])) { ?>

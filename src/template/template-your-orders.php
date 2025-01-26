@@ -1,4 +1,4 @@
-<header class="bg-dark text-white text-center py-4">
+<header class="bg-dark text-white text-center py-2 pt-4">
     <h1>Riepilogo Ordini</h1>
 </header>
 <div class="container my-4">
