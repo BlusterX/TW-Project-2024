@@ -72,11 +72,13 @@
                 </a>
             </div>
         </nav>
-        <?php
-        if (isset($templateParams["name"])) {
-            require($templateParams["name"]);
-        }
-        ?>
+        <main class="main-content">
+            <?php
+            if (isset($templateParams["name"])) {
+                require($templateParams["name"]);
+            }
+            ?>
+        </main>
         <!-- FOOTER -->
         <footer class="text-center text-white p-4 footer-custom w-100 mt-auto">
             <p class="mb-1">© 2025 PG-Commerce. Tutti i diritti riservati.</p>

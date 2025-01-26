@@ -1,5 +1,5 @@
 <!-- CONTENUTO PRINCIPALE -->
-<main class="container my-5">
+<div class="container my-5">
     <h2 class="fw-bold mb-4 text-center">Gestione Prodotti</h2>
 
     <div class="d-flex justify-content-end">
@@ -50,4 +50,4 @@
             Logout
           </button>
     </div>
-  </main>
+  </div>

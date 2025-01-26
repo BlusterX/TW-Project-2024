@@ -1,7 +1,7 @@
-<header class="bg-dark text-white text-center py-3">
+<header class="bg-dark text-white text-center py-3 pt-2">
     <h1>Riepilogo Ordine</h1>
 </header>
-<main class="container my-4">
+<div class="container my-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
@@ -33,4 +33,4 @@
             </div>
         </div>
     </div>
-</main>
+</div>

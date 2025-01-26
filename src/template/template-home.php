@@ -21,7 +21,7 @@ if (!empty($templateParams["products_with_discount"])) {
 } 
 ?>
 <!-- PRODOTTI -->
-    <main class="container my-4">
+    <div class="container my-4">
         <div class="row">
             <?php foreach ($templateParams["products"] as $product): ?>
                 <div class="col-12 col-md-6 col-lg-4">
@@ -67,4 +67,4 @@ if (!empty($templateParams["products_with_discount"])) {
                 </div>
                 <?php endforeach; ?>
             </div>
-        </main>
+</div>

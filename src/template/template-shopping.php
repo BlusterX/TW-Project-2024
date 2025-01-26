@@ -5,7 +5,7 @@
     }
     else{
 ?>
-        <main class="container py-4">
+        <div class="container py-4">
             <!-- Intestazione colonne -->
             <div class="row mb-2">
                 <div class="col-12 col-md-8 offset-md-2 d-flex justify-content-between px-5">
@@ -40,7 +40,7 @@
                         <!-- Pulsante Rimuovi -->
                         <form method="POST" action="api/remove-from-cart.php" class="d-inline col-3 text-center">
                             <input type="hidden" name="product_id" value="<?php echo $product["id_product"]; ?>"/>
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i>Rimuovi</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><span class="bi bi-trash"></span>Rimuovi</button>
                         </form>
                     </div>
                 </div>
@@ -66,5 +66,5 @@
                 </div>
             </div>
             <?php } ?>
-            </main>
+        </div>
 <?php } ?>

@@ -1,7 +1,7 @@
 <header class="bg-dark text-white text-center py-3">
     <h1>Riepilogo Ordini</h1>
 </header>
-<main class="container my-4">
+<div class="container my-4">
     <div class="accordion orderAccordion">
         <?php foreach ($templateParams["orders"] as $order):
             $orderDate = formatDate($order["date"]);
@@ -47,4 +47,4 @@
             </div>
         <?php endforeach; ?>
     </div>
-</main>
+</div>
