@@ -29,7 +29,7 @@ function addClickListener(button) {
 }
 
 function updateNotificationsList() {
-    const notificationsContainer = document.getElementsByClassName("notificationsAccordion");
+    const notificationsContainer = document.querySelector(".notificationsAccordion");
     const url = "api/check-notifications.php";
     fetch(url)
         .then((response) => {
